@@ -39,5 +39,4 @@ class NoticeServiceTest {
         then(noticeRepository).should().save(any(Notice.class));
 
     }
-
 }

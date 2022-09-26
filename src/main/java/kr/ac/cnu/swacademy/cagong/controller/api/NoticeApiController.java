@@ -19,5 +19,3 @@ public class NoticeApiController {
         return noticeService.save(requestDto);
     }
 }
-
-
