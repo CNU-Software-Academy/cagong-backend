@@ -48,7 +48,7 @@ public class NoticeApiControllerTest {
     }
 
     @Test
-    void Posts_등록된다() throws Exception {
+    void Notice_등록된다() throws Exception {
         //given
         String title = "title";
         String content = "content";
@@ -66,8 +66,8 @@ public class NoticeApiControllerTest {
                 .andExpect(status().isOk());
 
         //then
-        List<Notice> postsList = noticeRepository.findAll();
-        assertThat(postsList.get(0).getTitle()).isEqualTo(title);
-        assertThat(postsList.get(0).getContent()).isEqualTo(content);
+        List<Notice> NoticeList = noticeRepository.findAll();
+        assertThat(NoticeList.get(0).getTitle()).isEqualTo(title);
+        assertThat(NoticeList.get(0).getContent()).isEqualTo(content);
     }
 }
