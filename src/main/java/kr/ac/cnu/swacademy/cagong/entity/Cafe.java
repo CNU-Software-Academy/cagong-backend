@@ -1,13 +1,19 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @Table(name="cafes")
 @Entity
+@Setter
+@Getter
+@ToString
 public class Cafe extends BaseTimeEntity {
 
     @Id
@@ -23,6 +29,15 @@ public class Cafe extends BaseTimeEntity {
     @Column(length = 45)
     private String address;
 
-    private int mapX;
-    private int mapY;
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "cafe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+// 나중에 구현
+//    private Double longitude;
+//    private Double latitude;
+
+    public void addReview(Review review) {
+        review.setCafe(this);
+    }
 }
