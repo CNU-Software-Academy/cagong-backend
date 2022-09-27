@@ -1,4 +1,4 @@
-package kr.ac.cnu.swacademy.cagong.web.dto;
+package kr.ac.cnu.swacademy.cagong.dto;
 
 import kr.ac.cnu.swacademy.cagong.entity.Question;
 import kr.ac.cnu.swacademy.cagong.entity.User;
