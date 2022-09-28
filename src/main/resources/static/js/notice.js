@@ -63,7 +63,7 @@ let main = {
             alert('글이 삭제되었습니다.');
             location.href = "/notice";
         }).fail(function (error) {
-            console.log(error);
+            alert(JSON.stringify(error));
         });
     }
 };
