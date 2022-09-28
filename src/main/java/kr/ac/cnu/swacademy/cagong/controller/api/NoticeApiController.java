@@ -2,6 +2,7 @@ package kr.ac.cnu.swacademy.cagong.controller.api;
 
 import kr.ac.cnu.swacademy.cagong.dto.NoticeResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.NoticeSaveRequestDto;
+import kr.ac.cnu.swacademy.cagong.dto.NoticeUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,5 +17,10 @@ public class NoticeApiController {
     @PostMapping("/api/v1/notice")
     public Long save(@RequestBody NoticeSaveRequestDto requestDto) {
         return noticeService.save(requestDto);
+    }
+
+    @PutMapping("/api/v1/notice/{id}")
+    public Long update(@PathVariable Long id, @RequestBody NoticeUpdateRequestDto requestDto) {
+        return noticeService.update(id, requestDto);
     }
 }

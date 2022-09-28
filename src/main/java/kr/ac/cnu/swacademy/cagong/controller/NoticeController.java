@@ -1,5 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
+import kr.ac.cnu.swacademy.cagong.dto.NoticeResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.NoticeSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.service.NoticeService;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,11 @@ public class NoticeController {
     public String noticeSave(Model model) {
         model.addAttribute("saveForm", new NoticeSaveRequestDto());
         return "notice/saveForm";
+    }
+
+    @GetMapping("/notice/update/{id}")
+    public String postsUpdate(@PathVariable Long id, Model model) {
+        model.addAttribute("notice", noticeService.findById(id));
+        return "notice/updateForm";
     }
 }

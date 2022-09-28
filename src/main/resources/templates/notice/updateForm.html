@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -30,28 +30,21 @@
         <hr>
         <div th:replace="fragments/sidebar :: sidebar"></div>
     </div>
-    <div class="b-example-divider"></div>
     <div class="container mt-3 " style="width: 800px">
-        <button class="btn btn-success" th:onclick="history.back()">돌아가기</button>
-
-        <!--           todo: 관리자 필요-->
-        <span>
-            <a th:href="@{/notice/update/{id}(id=${notice.id})}" class="btn btn-warning">수정</a>
-            <button id="btn-delete" class="btn btn-danger">삭제</button>
-        </span>
-        <br/> <br/>
-        <div>
-            <span>작성자 관리자 | </span>
-            <span>등록일 </span>
-            <span th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></span>
+        <h2>공지사항</h2>
+        <input type="hidden" class="form-control" id="id" th:field="${notice.id}">
+        <div class="mb-3">
+            <label for="title" class="form-label"></label>
+            <input type="text" class="form-control" th:field="${notice.title}" id="title">
         </div>
-        <br/>
-        <div>
-            <h3>[[${notice.title}]]</h3>
+        <div class="mb-3">
+            <label for="content" class="form-label"></label>
+            <textarea class="form-control" th:field="${notice.content}" id="content" rows="3"
+                      style="height: 500px"></textarea>
         </div>
-        <hr/>
-        <div>[[${notice.content}]]</div>
+        <button type="button" id="btn-update" class="btn btn-primary">저장</button>
     </div>
+    <script type="text/javascript" th:src="@{/js/notice.js}"></script>
 </main>
 </body>
 </html>
