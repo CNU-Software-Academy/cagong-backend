@@ -23,4 +23,10 @@ public class NoticeApiController {
     public Long update(@PathVariable Long id, @RequestBody NoticeUpdateRequestDto requestDto) {
         return noticeService.update(id, requestDto);
     }
+
+    @DeleteMapping("/api/v1/notice/{id}")
+    public Long delete(@PathVariable Long id) {
+        noticeService.delete(id);
+        return id;
+    }
 }

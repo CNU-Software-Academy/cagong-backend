@@ -41,7 +41,9 @@
         </span>
         <br/> <br/>
         <div>
-            <span>작성자 관리자 | </span>
+            <span>글번호 </span>
+            <span id="id">[[${notice.id}]]</span>
+            <span>| 작성자 관리자 | </span>
             <span>등록일 </span>
             <span th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></span>
         </div>
@@ -52,6 +54,7 @@
         <hr/>
         <div>[[${notice.content}]]</div>
     </div>
+    <script type="text/javascript" th:src="@{/js/notice.js}"></script>
 </main>
 </body>
 </html>
