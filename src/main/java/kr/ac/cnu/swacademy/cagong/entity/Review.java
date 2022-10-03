@@ -1,7 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +11,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @Table(name="reviews")
 @Entity
-@Setter
 public class Review extends BaseTimeEntity {
 
     @Id

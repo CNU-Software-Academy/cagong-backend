@@ -11,7 +11,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @Table(name="cafes")
 @Entity
-@Setter
 @Getter
 @ToString
 public class Cafe extends BaseTimeEntity {
@@ -29,11 +28,16 @@ public class Cafe extends BaseTimeEntity {
     @Column(length = 45)
     private String address;
 
-    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "cafe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
-// 나중에 구현
+    @Builder
+    public Cafe(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    // 나중에 구현
 //    private Double longitude;
 //    private Double latitude;
 
