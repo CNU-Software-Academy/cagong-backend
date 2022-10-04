@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -33,6 +34,12 @@ public class Question extends BaseTimeEntity {
     @Builder
     public Question(User user, String title, String content){
         this.user = user;
+        this.title = title;
+        this.content = content;
+    }
+
+    // 수정
+    public void update(String title, String content){
         this.title = title;
         this.content = content;
     }
