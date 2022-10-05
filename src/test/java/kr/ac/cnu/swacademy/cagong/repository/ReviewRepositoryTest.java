@@ -79,5 +79,24 @@ class ReviewRepositoryTest {
         assertThat(all).hasSize(2);
     }
 
+    @Test
+    @Transactional
+    void 리뷰를_하나_조회한다() {
+        // given
+        Review review = Review.builder()
+                .clean(5)
+                .concentration(5)
+                .seat(5)
+                .content("hello")
+                .imageUrl("greagerg")
+                .build();
 
+        // when
+        Review save = reviewRepository.save(review);
+
+        // then
+        Optional<Review> found = reviewRepository.findById(save.getId());
+        assertThat(found).isPresent();
+        assertThat(found.get()).isEqualTo(save);
+    }
 }
