@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,4 +49,35 @@ class ReviewRepositoryTest {
         assertThat(found).isPresent();
         assertThat(found.get()).isEqualTo(save);
     }
+
+    @Test
+    void 리뷰를_모두_조회한다() {
+        // given
+        Review review1 = Review.builder()
+                .clean(5)
+                .concentration(5)
+                .seat(5)
+                .content("hello")
+                .imageUrl("greagerg")
+                .build();
+
+        Review review2 = Review.builder()
+                .clean(5)
+                .concentration(5)
+                .seat(5)
+                .content("hello")
+                .imageUrl("greagerg")
+                .build();
+
+        Review save1 = reviewRepository.save(review1);
+        Review save2 = reviewRepository.save(review2);
+
+        // when
+        List<Review> all = reviewRepository.findAll();
+
+        // then
+        assertThat(all).hasSize(2);
+    }
+
+
 }
