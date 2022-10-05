@@ -51,6 +51,25 @@
             </tbody>
         </table>
         <a href="/notice/save" class="btn btn-primary">작성</a>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled " th:if="${noticeList.first}">
+                <a class="page-link"
+                   th:href="@{/notice(page=|${noticeList.number-1}|)}">Previous</a>
+            </li>
+            <li class="page-item" th:unless="${noticeList.first}">
+                <a class="page-link page-link-success"
+                   th:href="@{/notice(page=|${noticeList.number-1}|)}">Previous</a>
+            </li>
+
+            <li class="page-item disabled" th:if="${noticeList.last}">
+                <a class="page-link"
+                   th:href="@{/notice(page=|${noticeList.number+1}|)}">Next</a>
+            </li>
+            <li class="page-item" th:unless="${noticeList.last}">
+                <a class="page-link"
+                   th:href="@{/notice(page=|${noticeList.number+1}|)}">Next</a>
+            </li>
+        </ul>
     </div>
 </main>
 </body>

@@ -7,6 +7,8 @@ import kr.ac.cnu.swacademy.cagong.dto.NoticeUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Notice;
 import kr.ac.cnu.swacademy.cagong.repository.NoticeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,10 +33,9 @@ public class NoticeService {
     }
 
     @Transactional(readOnly = true)
-    public List<NoticeListResponseDto> findAllDesc() {
-        return noticeRepository.findAllDesc().stream()
-                .map(NoticeListResponseDto::new)
-                .collect(Collectors.toList());
+    public Page<NoticeListResponseDto> findAllDesc(Pageable pageable) {
+        return noticeRepository.findAllDesc(pageable)
+                .map(NoticeListResponseDto::new);
     }
 
     @Transactional
