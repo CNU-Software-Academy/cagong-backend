@@ -99,4 +99,27 @@ class ReviewRepositoryTest {
         assertThat(found).isPresent();
         assertThat(found.get()).isEqualTo(save);
     }
+
+    @Test
+    @Transactional
+    void 리뷰를_수정한다() {
+        // given
+        Review review = Review.builder()
+                .clean(5)
+                .concentration(5)
+                .seat(5)
+                .content("hello")
+                .imageUrl("greagerg")
+                .build();
+
+        // when
+        Review save = reviewRepository.save(review);
+        save.setConcentration(4);
+
+        // then
+        Optional<Review> found = reviewRepository.findById(save.getId());
+        assertThat(found).isPresent();
+        assertThat(found.get().getConcentration()).isEqualTo(save.getConcentration());
+        assertThat(found.get().getId()).isEqualTo(save.getId());
+    }
 }
