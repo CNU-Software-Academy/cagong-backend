@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @NoArgsConstructor
 @Table(name="reviews")
@@ -38,4 +39,13 @@ public class Review extends BaseTimeEntity {
     private int seat;
     @NotNull
     private int concentration;
+
+    public void setCafe(Cafe cafe) {
+        if (Objects.nonNull(this.cafe)) {
+            this.cafe.getReviews().remove(this);
+        }
+
+        this.cafe = cafe;
+        cafe.getReviews().add(this);
+    }
 }
