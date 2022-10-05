@@ -1,5 +1,7 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Table(name="reviews")
 @Entity
+@Getter
 public class Review extends BaseTimeEntity {
 
     @Id
@@ -38,4 +41,15 @@ public class Review extends BaseTimeEntity {
     private int seat;
     @NotNull
     private int concentration;
+
+    @Builder
+    public Review(int clean, int seat, int concentration, String content, String imageUrl, User user, Cafe cafe) {
+        this.clean = clean;
+        this.seat = seat;
+        this.concentration = concentration;
+        this.user = user;
+        this.cafe = cafe;
+        this.content = content;
+        this.imageUrl = imageUrl;
+    }
 }
