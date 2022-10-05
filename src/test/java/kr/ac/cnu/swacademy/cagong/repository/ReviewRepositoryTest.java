@@ -122,4 +122,25 @@ class ReviewRepositoryTest {
         assertThat(found.get().getConcentration()).isEqualTo(save.getConcentration());
         assertThat(found.get().getId()).isEqualTo(save.getId());
     }
+
+    @Test
+    @Transactional
+    void 리뷰를_삭제한다() {
+        // given
+        Review review = Review.builder()
+                .clean(5)
+                .concentration(5)
+                .seat(5)
+                .content("hello")
+                .imageUrl("greagerg")
+                .build();
+        Review save = reviewRepository.save(review);
+
+        // when
+        reviewRepository.deleteById(save.getId());
+
+        // then
+        List<Review> all = reviewRepository.findAll();
+        assertThat(all).isEmpty();
+    }
 }
