@@ -3,6 +3,7 @@ package kr.ac.cnu.swacademy.cagong.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -20,25 +21,32 @@ public class Review extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cafe_id")
     private Cafe cafe;
 
+    @Setter
     @NotBlank
     @Size(min = 5, message = "최소 5글자를 입력해주세요.")
     @Column(length = 45)
     private String content;
 
+    @Setter
     private String imageUrl;
 
+    @Setter
     @NotNull
     private int clean;
+    @Setter
     @NotNull
     private int seat;
+    @Setter
     @NotNull
     private int concentration;
 
