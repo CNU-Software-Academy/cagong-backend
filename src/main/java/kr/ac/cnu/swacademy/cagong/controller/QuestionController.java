@@ -15,6 +15,18 @@ public class QuestionController {
 
     private final QuestionService questionService;
 
+    @GetMapping("/question")
+    public String questionList(Model model){
+        model.addAttribute("questionList", questionService.findAllDesc());
+        return "question/questionList";
+    }
+
+    @GetMapping
+    public String question(@PathVariable Long id, Model model){
+        model.addAttribute("question", questionService.findById(id));
+        return "question/detail";
+    }
+
     @GetMapping("/question/save")
     public String questionSave(Model model) {
         model.addAttribute("saveForm", new QuestionSaveRequestDto());

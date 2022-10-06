@@ -1,5 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.service.question;
 
+import kr.ac.cnu.swacademy.cagong.dto.QuestionListResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Question;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,6 +28,14 @@ public class QuestionService {
         Question entity = questionRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 질문이 없습니다. id=" + id));
         return new QuestionResponseDto(entity);
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<QuestionListResponseDto> findAllDesc(){
+        return questionRepository.findAllDesc().stream()
+                .map(QuestionListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     public Long update(Long id, QuestionUpdateRequestDto requestDto) {

@@ -14,7 +14,7 @@ public class QuestionApiController {
     private final QuestionService questionService;
 
     @PostMapping("/api/v1/question")
-    public long save(@RequestBody QuestionSaveRequestDto requestDto){
+    public Long save(@RequestBody QuestionSaveRequestDto requestDto){
         return questionService.save(requestDto);
     }
 

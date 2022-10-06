@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -31,21 +31,26 @@
         <div th:replace="fragments/sidebar :: sidebar"></div>
     </div>
     <div class="container mt-3 " style="width: 800px">
-        <h2>Q & A</h2>
-        <div class="mb-3">
-            <label for="title" class="form-label"></label>
-            <input type="text" class="form-control" th:field="${saveForm.title}" id="title"
-                   placeholder="질문을 입력해주세요">
-        </div>
-        <div class="mb-3">
-            <label for="content" class="form-label"></label>
-            <textarea class="form-control" th:field="${saveForm.content}" id="content" rows="3"
-                      style="height: 500px"
-                      placeholder="내용을 입력해주세요"></textarea>
-        </div>
-        <button type="button" id="btn-save" class="btn btn-primary">등록</button>
+        <h2>공지사항</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="col-sm-1" scope="col">번호</th>
+                <th class="col-sm-6" scope="col">제목</th>
+                <th class="col-sm-2" scope="col">작성일</th>
+                <th class="col-sm-1" scope="col">작성자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question : ${questionList}">
+                <th scope="row">[[${question.id}]]</th>
+                <td><a th:href="@{/question/{id}(id=${question.id})}">[[${question.title}]]</a></td>
+                <td th:text="${#temporals.format(question.createdAt, 'yyyy-MM-dd')}"></td>
+                <td>관리자</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <script type="text/javascript" th:src="@{/js/question.js}"></script>
 </main>
 </body>
 </html>
