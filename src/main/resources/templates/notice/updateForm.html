@@ -32,18 +32,17 @@
     </div>
     <div class="container mt-3 " style="width: 800px">
         <h2>공지사항</h2>
+        <input type="hidden" class="form-control" id="id" th:field="${notice.id}">
         <div class="mb-3">
             <label for="title" class="form-label"></label>
-            <input type="text" class="form-control" th:field="${saveForm.title}" id="title"
-                   placeholder="제목을 입력해주세요">
+            <input type="text" class="form-control" th:field="${notice.title}" id="title">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label"></label>
-            <textarea class="form-control" th:field="${saveForm.content}" id="content" rows="3"
-                      style="height: 500px"
-                      placeholder="내용을 입력해주세요"></textarea>
+            <textarea class="form-control" th:field="${notice.content}" id="content" rows="3"
+                      style="height: 500px"></textarea>
         </div>
-        <button type="button" id="btn-save" class="btn btn-primary">저장</button>
+        <button type="button" id="btn-update" class="btn btn-primary">저장</button>
     </div>
     <script type="text/javascript" th:src="@{/js/notice.js}"></script>
 </main>
