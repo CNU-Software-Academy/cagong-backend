@@ -43,6 +43,4 @@ public class Question extends BaseTimeEntity {
         this.title = title;
         this.content = content;
     }
-
-
 }

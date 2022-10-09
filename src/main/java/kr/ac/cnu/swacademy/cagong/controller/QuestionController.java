@@ -21,7 +21,7 @@ public class QuestionController {
         return "question/questionList";
     }
 
-    @GetMapping
+    @GetMapping("/question/{id}")
     public String question(@PathVariable Long id, Model model){
         model.addAttribute("question", questionService.findById(id));
         return "question/detail";

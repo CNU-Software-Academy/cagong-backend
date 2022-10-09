@@ -38,6 +38,7 @@ public class QuestionService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public Long update(Long id, QuestionUpdateRequestDto requestDto) {
         Question question = questionRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 질문이 없습니다. id="+id));
@@ -45,6 +46,10 @@ public class QuestionService {
         return id;
     }
 
-
-
+    @Transactional
+    public void delete(Long id){
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 질문이 없습니다. id = " + id));
+        questionRepository.delete(question);
+    }
 }
