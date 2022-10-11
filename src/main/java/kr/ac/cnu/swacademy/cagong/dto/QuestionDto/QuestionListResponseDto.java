@@ -1,4 +1,4 @@
-package kr.ac.cnu.swacademy.cagong.dto;
+package kr.ac.cnu.swacademy.cagong.dto.QuestionDto;
 
 import kr.ac.cnu.swacademy.cagong.entity.Question;
 import lombok.Getter;
