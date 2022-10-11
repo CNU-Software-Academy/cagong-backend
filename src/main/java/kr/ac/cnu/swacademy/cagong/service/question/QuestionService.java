@@ -1,11 +1,13 @@
 package kr.ac.cnu.swacademy.cagong.service.question;
 
-import kr.ac.cnu.swacademy.cagong.dto.QuestionListResponseDto;
-import kr.ac.cnu.swacademy.cagong.dto.QuestionResponseDto;
-import kr.ac.cnu.swacademy.cagong.dto.QuestionUpdateRequestDto;
+import kr.ac.cnu.swacademy.cagong.dto.AnswerDto.AnswerSaveRequestDto;
+import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionListResponseDto;
+import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionResponseDto;
+import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Question;
+import kr.ac.cnu.swacademy.cagong.repository.AnswerRepository;
 import kr.ac.cnu.swacademy.cagong.repository.QuestionRepository;
-import kr.ac.cnu.swacademy.cagong.dto.QuestionSaveRequestDto;
+import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final AnswerRepository answerRepository;
 
     @Transactional
     public Long save(QuestionSaveRequestDto requestDto) {
@@ -29,7 +32,6 @@ public class QuestionService {
                 new IllegalArgumentException("해당 질문이 없습니다. id=" + id));
         return new QuestionResponseDto(entity);
     }
-
 
     @Transactional(readOnly = true)
     public List<QuestionListResponseDto> findAllDesc(){
@@ -51,5 +53,10 @@ public class QuestionService {
         Question question = questionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 질문이 없습니다. id = " + id));
         questionRepository.delete(question);
+    }
+
+    @Transactional
+    public void 댓글쓰기(AnswerSaveRequestDto answerSaveRequestDto) {
+        answerRepository.mSave(answerSaveRequestDto.getUserId(), answerSaveRequestDto.getQuestionId(), answerSaveRequestDto.getComment());
     }
 }

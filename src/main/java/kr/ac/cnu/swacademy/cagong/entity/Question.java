@@ -1,5 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -31,6 +33,11 @@ public class Question extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"question"})
+    @OrderBy("id desc")
+    private List<Answer> answers;
+
     @Builder
     public Question(User user, String title, String content){
         this.user = user;
@@ -38,7 +45,7 @@ public class Question extends BaseTimeEntity {
         this.content = content;
     }
 
-    // 수정
+    //  수정
     public void update(String title, String content){
         this.title = title;
         this.content = content;
