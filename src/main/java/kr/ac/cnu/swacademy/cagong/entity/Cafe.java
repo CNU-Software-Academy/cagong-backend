@@ -12,7 +12,6 @@ import java.util.List;
 @Table(name="cafes")
 @Entity
 @Getter
-@ToString
 public class Cafe extends BaseTimeEntity {
 
     @Id
@@ -21,11 +20,11 @@ public class Cafe extends BaseTimeEntity {
     private Long id;
 
     @NotBlank
-    @Column(length = 45)
+    @Column(length = 100)
     private String name;
 
     @NotBlank
-    @Column(length = 45)
+    @Column(length = 100)//이름 길어서 안들어가서 늘려줌
     private String address;
 
     @NotNull
@@ -36,34 +35,21 @@ public class Cafe extends BaseTimeEntity {
 
     private Double averagePrice;
 
-    /**
-     * 네이버에서의 평점
-     */
-    private Double averageScoreInNaver;
+    private Double averageScore	;
 
-    /**
-     * 네이버에서 좌석이 좋아요를 선택한 사용자의 수
-     */
-    private Integer seatSelectionCountInNaver;
-
-    /**
-     * 네이버에서 집중하기 좋아요를 선택한 사용자의 수
-     */
-    private Integer concentrationSelectionCountInNaver;
+    private String zone;
 
     @OneToMany(mappedBy = "cafe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
-    @Builder
-    public Cafe(String name, String address, Double averagePrice, Double longitude, Double latitude, Double averageScoreInNaver, Integer seatSelectionCountInNaver, Integer concentrationSelectionCountInNaver) {
+    public Cafe(String name, String address, Double longitude, Double latitude, Double averagePrice, Double averageScore, String zone) {
         this.name = name;
         this.address = address;
-        this.averagePrice = averagePrice;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.averageScoreInNaver = averageScoreInNaver;
-        this.seatSelectionCountInNaver = seatSelectionCountInNaver;
-        this.concentrationSelectionCountInNaver = concentrationSelectionCountInNaver;
+        this.averagePrice = averagePrice;
+        this.averageScore = averageScore;
+        this.zone = zone;
     }
 
     public void addReview(Review review) {
