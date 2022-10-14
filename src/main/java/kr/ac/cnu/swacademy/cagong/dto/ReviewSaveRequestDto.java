@@ -4,8 +4,14 @@ import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import kr.ac.cnu.swacademy.cagong.entity.Review;
 import kr.ac.cnu.swacademy.cagong.entity.User;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
+@NoArgsConstructor
+@Setter
+@Getter
 public class ReviewSaveRequestDto {
 
     private String content;
