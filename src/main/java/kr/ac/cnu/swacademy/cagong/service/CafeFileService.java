@@ -20,21 +20,28 @@ public class CafeFileService {
     private final File file = new File("cafe.csv");
 
     public void save() {
-//        List<Cafe> cafes = new ArrayList<>();
         String line;
-
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)){
-
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arr = line.split(",");
-                Cafe cafe = new Cafe(arr[1],arr[2],Double.parseDouble(arr[3]),Double.parseDouble(arr[4]),Double.parseDouble(arr[5]),Double.parseDouble(arr[6]),arr[7]);
-//                cafes.add(cafe);
+                Cafe cafe = new Cafe(
+                        arr[0],
+                        arr[1],
+                        Double.parseDouble(arr[2]),
+                        Double.parseDouble(arr[3]),
+                        Double.parseDouble(arr[4]),
+                        Double.parseDouble(arr[5]),
+                        Double.parseDouble(arr[6]),
+                        Integer.parseInt(arr[7]),
+                        Integer.parseInt(arr[8]),
+                        Integer.parseInt(arr[9]),
+                        arr[10]
+                        );
                 cafeRepository.save(cafe);
             }
         } catch (IOException | NullPointerException e) {
             log.error("findAll() IOException  error ", e);
         }
-//        return cafes;
     }
 }
