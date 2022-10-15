@@ -17,7 +17,6 @@ import static ognl.DynamicSubscript.all;
 @RequiredArgsConstructor
 public class ReviewController {
 
-
     private final ReviewService reviewService;
 
     @GetMapping("/reviews")
