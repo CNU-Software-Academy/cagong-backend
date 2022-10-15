@@ -19,6 +19,8 @@ public class ReviewSaveRequestDto {
     private int seat;
     private int concentration;
     private String imageUrl;
+    private Long userId;
+    private Long cafeId;
 
     @Builder
     public ReviewSaveRequestDto(
@@ -26,13 +28,17 @@ public class ReviewSaveRequestDto {
             int clean,
             int seat,
             int concentration,
-            String imageUrl
+            String imageUrl,
+            Long userId,
+            Long cafeIds
     ) {
         this.content = content;
         this.clean = clean;
         this.seat = seat;
         this.concentration = concentration;
         this.imageUrl = imageUrl;
+        this.userId = userId;
+        this.cafeId = cafeId;
     }
 
     public Review toEntity(User user, Cafe cafe) {
