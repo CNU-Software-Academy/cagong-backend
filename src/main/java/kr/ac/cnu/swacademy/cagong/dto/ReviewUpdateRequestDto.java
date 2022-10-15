@@ -1,0 +1,53 @@
+package kr.ac.cnu.swacademy.cagong.dto;
+
+import kr.ac.cnu.swacademy.cagong.entity.Cafe;
+import kr.ac.cnu.swacademy.cagong.entity.Review;
+import kr.ac.cnu.swacademy.cagong.entity.User;
+import lombok.*;
+
+
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+public class ReviewUpdateRequestDto {
+
+    private String content;
+    private int clean;
+    private int seat;
+    private int concentration;
+    private String imageUrl;
+    private Long userId;
+    private Long cafeId;
+
+    @Builder
+    public ReviewUpdateRequestDto(
+            String content,
+            int clean,
+            int seat,
+            int concentration,
+            String imageUrl,
+            Long userId,
+            Long cafeId
+    ) {
+        this.content = content;
+        this.clean = clean;
+        this.seat = seat;
+        this.concentration = concentration;
+        this.imageUrl = imageUrl;
+        this.userId = userId;
+        this.cafeId = cafeId;
+    }
+
+    public Review toEntity(User user, Cafe cafe) {
+        return Review.builder()
+                .user(user)
+                .cafe(cafe)
+                .content(content)
+                .clean(clean)
+                .seat(seat)
+                .concentration(concentration)
+                .imageUrl(imageUrl)
+                .build();
+    }
+}
