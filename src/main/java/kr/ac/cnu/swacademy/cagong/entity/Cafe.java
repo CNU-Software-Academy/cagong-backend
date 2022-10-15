@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,8 @@ public class Cafe extends BaseTimeEntity {
     @Column(length = 100)
     private String address;
 
-    @NotNull
     private double latitude;
 
-    @NotNull
     private double longitude;
 
     private double averagePrice;
