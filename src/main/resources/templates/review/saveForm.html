@@ -34,12 +34,12 @@
         <h2>리뷰 등록</h2>
         User id
         <select class="form-select mb-3" aria-label="Default select example">
-            <option th:each="userId : ${userIdList}" th:value="${userId}" th:text="${userId}"></option>
+            <option th:each="userId : ${userIdList}" th:value="${userId}" id="userId" th:text="${userId}"></option>
 
         </select>
         Cafe id
         <select class="form-select mb-3" aria-label="Default select example">
-            <option th:each="cafeId : ${cafeIdList}" th:value="${cafeId}" th:text="${cafeId}"></option>
+            <option th:each="cafeId : ${cafeIdList}" th:value="${cafeId}" id="cafeId" th:text="${cafeId}"></option>
 
         </select>
         clean
@@ -65,15 +65,15 @@
         content
         <div class="mb-3">
             <textarea class="form-control" th:field="${review.content}" id="content" rows="3"
-                      style="height: 400px"
+                      style="height: 200px"
                       placeholder="내용을 입력해주세요"></textarea>
         </div>
         <div>
             <a th:href="@{/reviews}" role="button" class="btn btn-secondary">취소</a>
-            <button type="button" id="btn-add" class="btn btn-primary">추가</button>
+            <button type="button" id="btn-save" class="btn btn-primary">추가</button>
         </div>
     </div>
-
+    <script type="text/javascript" th:src="@{/js/review.js}"></script>
 </main>
 </body>
 </html>
