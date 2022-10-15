@@ -53,4 +53,15 @@ public class ReviewController {
         model.addAttribute("review", responseDto);
         return "review/detail";
     }
+
+    @GetMapping("/review/update/{reviewId}")
+    public String reviewUpdate(@PathVariable Long reviewId, Model model) {
+        ReviewResponseDto responseDto = reviewService.findById(reviewId);
+        List<Long> userIdList = userService.findId();
+        List<Long> cafeIdList = cafeService.findId();
+        model.addAttribute("review", responseDto);
+        model.addAttribute("userIdList", userIdList);
+        model.addAttribute("cafeIdList", cafeIdList);
+        return "review/updateForm";
+    }
 }
