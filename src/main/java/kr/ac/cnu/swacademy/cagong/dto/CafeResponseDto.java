@@ -8,22 +8,28 @@ public class CafeResponseDto {
     private Long id;
     private String name;
     private String address;
-    private Double longitude;
-    private Double latitude;
-    private Double averagePrice;
-    private Double averageScoreInNaver;
-    private Integer seatSelectionCountInNaver;
-    private Integer concentrationSelectionCountInNaver;
+    private String zone;
+    private double longitude;
+    private double latitude;
+    private double averagePrice;
+    private double averageScore;
+    private double studyScore;
+    private int seatSelectionCount;
+    private int concentrationSelectionCount;
+    private int totalReviewCount;
 
     public CafeResponseDto(Cafe entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.address = entity.getAddress();
+        this.zone = entity.getZone();
         this.longitude = entity.getLongitude();
         this.latitude = entity.getLatitude();
         this.averagePrice = entity.getAveragePrice();
-        this.averageScoreInNaver = entity.getAverageScoreInNaver();
-        this.seatSelectionCountInNaver = entity.getSeatSelectionCountInNaver();
-        this.concentrationSelectionCountInNaver = entity.getConcentrationSelectionCountInNaver();
+        this.averageScore = entity.getAverageScore();
+        this.studyScore = entity.getStudyScore();
+        this.seatSelectionCount = entity.getSeatSelectionCount();
+        this.concentrationSelectionCount = entity.getConcentrationSelectionCount();
+        this.totalReviewCount = entity.getTotalReviewCount();
     }
 }
