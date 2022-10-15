@@ -37,21 +37,27 @@ let main = {
     },
     update : function () {
         let data = {
-            title: $('#title').val(),
-            content: $('#content').val()
+            userId: $('#userId').val(),
+            cafeId: $('#cafeId').val(),
+            clean: $('#clean').val(),
+            seat: $('#seat').val(),
+            concentration: $('#concentration').val(),
+            imageUrl: $('#imageUrl').val(),
+            content: $('#content').val(),
         };
 
+        console.log(data)
         let id = $('#id').val();
 
         $.ajax({
             type: 'PUT',
-            url: '/api/v1/notice/'+id,
+            url: '/api/v1/review/'+id,
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
             alert('글이 수정되었습니다.');
-            location.href = "/notice";
+            location.href = "/reviews";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -61,12 +67,12 @@ let main = {
 
         $.ajax({
             type: 'DELETE',
-            url: '/api/v1/notice/'+ parseInt(id),
+            url: '/api/v1/review/'+ parseInt(id),
             dataType: 'json',
             contentType:'application/json; charset=utf-8'
         }).done(function() {
             alert('글이 삭제되었습니다.');
-            location.href = "/notice";
+            location.href = "/reviews";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
