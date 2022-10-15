@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
 @NoArgsConstructor
 @Table(name="cafes")
 @Entity
@@ -35,21 +36,12 @@ public class Cafe extends BaseTimeEntity {
 
     private double averagePrice;
 
-    /**
-     * 네이버에서의 평점
-     */
     private double averageScore;
 
     private double studyScore;
 
-    /**
-     * 네이버에서 좌석이 좋아요를 선택한 사용자의 수
-     */
     private int seatSelectionCount;
 
-    /**
-     * 네이버에서 집중하기 좋아요를 선택한 사용자의 수
-     */
     private int concentrationSelectionCount;
 
     private int totalReviewCount;
