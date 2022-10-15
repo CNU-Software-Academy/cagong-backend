@@ -31,26 +31,36 @@
         <div th:replace="fragments/sidebar :: sidebar"></div>
     </div>
     <div class="container mt-3 " style="width: 800px">
-        <h2>작업 추가</h2>
+        <h2>리뷰 등록</h2>
+        User id
+        <select class="form-select mb-3" aria-label="Default select example">
+            <option th:each="userId : ${userIdList}" th:value="${userId}" th:text="${userId}"></option>
+
+        </select>
+        Cafe id
+        <select class="form-select mb-3" aria-label="Default select example">
+            <option th:each="cafeId : ${cafeIdList}" th:value="${cafeId}" th:text="${cafeId}"></option>
+
+        </select>
         clean
         <div class="mb-3">
             <input type="number" class="form-control"  id="clean" th:field="${review.clean}"
-                   placeholder="Command을 입력해주세요">
+                   placeholder="clean을 입력해주세요">
         </div>
         Seat
         <div class="mb-3">
             <input type="number" class="form-control"  id="seat" th:field="${review.seat}"
-                   placeholder="Command을 입력해주세요">
+                   placeholder="seat을 입력해주세요">
         </div>
         concentration
         <div class="mb-3">
             <input type="number" class="form-control"  id="concentration" th:field="${review.concentration}"
-                   placeholder="Parameter을 입력해주세요">
+                   placeholder="concentration을 입력해주세요">
         </div>
         imageUrl
         <div class="mb-3">
             <input type="text" class="form-control"  id="imageUrl" th:field="${review.imageUrl}"
-                   placeholder="Parameter을 입력해주세요">
+                   placeholder="image-url을 입력해주세요">
         </div>
         content
         <div class="mb-3">
