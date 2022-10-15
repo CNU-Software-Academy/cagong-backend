@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReviewApiController {
     private final ReviewService reviewService;
-    private final UserService userService;
-    private final CafeService cafeService;
+
     @PostMapping("/api/v1/review")
     public ResponseEntity<Long> saveReview(@RequestBody ReviewSaveRequestDto requestDto) {
         Long savedId = reviewService.save(requestDto);
@@ -28,6 +27,12 @@ public class ReviewApiController {
         Long updatedId = reviewService.update(reviewId, requestDto);
         log.info("{}", requestDto.toString());
         return ResponseEntity.ok(updatedId);
+    }
+
+    @DeleteMapping("/api/v1/review/{reviewId}")
+    public ResponseEntity<Long> deleteReview(@PathVariable Long reviewId) {
+        reviewService.delete(reviewId);
+        return ResponseEntity.ok(reviewId);
     }
 
 }
