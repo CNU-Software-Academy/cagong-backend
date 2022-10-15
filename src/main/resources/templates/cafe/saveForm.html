@@ -25,6 +25,10 @@
         <input type="text" class="form-control" id="address">
     </div>
     <div class="mb-3">
+        <label for="zone" class="form-label">Zone</label>
+        <input type="text" class="form-control" id="zone">
+    </div>
+    <div class="mb-3">
         <label for="longitude" class="form-label">Longitude</label>
         <input type="number" step="0.0000001" class="form-control" id="longitude">
     </div>
@@ -37,16 +41,24 @@
         <input type="number" step="0.0000001" class="form-control" id="averagePrice">
     </div>
     <div class="mb-3">
-        <label for="averageScoreInNaver" class="form-label">Average Score In Naver</label>
-        <input type="number" step="0.0000001" class="form-control" id="averageScoreInNaver">
+        <label for="averageScore" class="form-label">Average Score</label>
+        <input type="number" class="form-control" id="averageScore">
     </div>
     <div class="mb-3">
-        <label for="seatSelectionCountInNaver" class="form-label">Seat Selection Count In Naver</label>
-        <input type="number" class="form-control" id="seatSelectionCountInNaver">
+        <label for="studyScore" class="form-label">Study Score</label>
+        <input type="number" class="form-control" id="studyScore">
     </div>
     <div class="mb-3">
-        <label for="concentrationSelectionCountInNaver" class="form-label">Concentration Selection Count In Naver</label>
-        <input type="number" class="form-control" id="concentrationSelectionCountInNaver">
+        <label for="seatSelectionCount" class="form-label">Seat Selection Count</label>
+        <input type="number" class="form-control" id="seatSelectionCount">
+    </div>
+    <div class="mb-3">
+        <label for="concentrationSelectionCount" class="form-label">Concentration Selection Count</label>
+        <input type="number" class="form-control" id="concentrationSelectionCount">
+    </div>
+    <div class="mb-3">
+        <label for="totalReviewCount" class="form-label">Total Review Count</label>
+        <input type="number" class="form-control" id="totalReviewCount">
     </div>
     <button type="submit" id="btn-save" class="btn btn-primary">추가</button>
     <a href="/admin/cafes" role="button" class="btn btn-secondary">취소</a>

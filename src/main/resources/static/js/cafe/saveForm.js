@@ -9,12 +9,15 @@ let main = {
         let data = {
             name: $('#name').val(),
             address: $('#address').val(),
+            zone: $('#zone').val(),
             longitude: $('#longitude').val(),
             latitude: $('#latitude').val(),
             averagePrice: $('#averagePrice').val(),
-            averageScoreInNaver: $('#averageScoreInNaver').val(),
-            seatSelectionCountInNaver: $('#seatSelectionCountInNaver').val(),
-            concentrationSelectionCountInNaver: $('#concentrationSelectionCountInNaver').val()
+            averageScore: $('#averageScore').val(),
+            studyScore: $('#studyScore').val(),
+            seatSelectionCount: $('#seatSelectionCount').val(),
+            concentrationSelectionCount: $('#concentrationSelectionCount').val(),
+            totalReviewCount: $('#totalReviewCount').val()
         };
 
         $.ajax({

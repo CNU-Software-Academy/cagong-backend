@@ -10,30 +10,39 @@ import lombok.NoArgsConstructor;
 public class CafeSaveRequestDto {
     private String name;
     private String address;
-    private Double longitude;
-    private Double latitude;
-    private Double averagePrice;
-    private Double averageScoreInNaver;
-    private Integer seatSelectionCountInNaver;
-    private Integer concentrationSelectionCountInNaver;
+    private double longitude;
+    private double latitude;
+    private double averagePrice;
+    private double averageScore;
+    private double studyScore;
+    private int seatSelectionCount;
+    private int concentrationSelectionCount;
+    private int totalReviewCount;
+    private String zone;
 
     @Builder
-    public CafeSaveRequestDto(String name ,
-                              String address ,
-                              Double longitude ,
-                              Double latitude ,
-                              Double averagePrice ,
-                              Double averageScoreInNaver ,
-                              Integer seatSelectionCountInNaver ,
-                              Integer concentrationSelectionCountInNaver) {
+    public CafeSaveRequestDto(String name,
+                              String address,
+                              double longitude,
+                              double latitude,
+                              double averagePrice,
+                              double averageScore,
+                              double studyScore,
+                              int seatSelectionCount,
+                              int concentrationSelectionCount,
+                              int totalReviewCount,
+                              String zone) {
         this.name = name;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.averagePrice = averagePrice;
-        this.averageScoreInNaver = averageScoreInNaver;
-        this.seatSelectionCountInNaver = seatSelectionCountInNaver;
-        this.concentrationSelectionCountInNaver = concentrationSelectionCountInNaver;
+        this.averageScore = averageScore;
+        this.studyScore = studyScore;
+        this.seatSelectionCount = seatSelectionCount;
+        this.concentrationSelectionCount = concentrationSelectionCount;
+        this.totalReviewCount = totalReviewCount;
+        this.zone = zone;
     }
 
     public Cafe toEntity() {
@@ -43,9 +52,12 @@ public class CafeSaveRequestDto {
                 .longitude(longitude)
                 .latitude(latitude)
                 .averagePrice(averagePrice)
-                .averageScoreInNaver(averageScoreInNaver)
-                .seatSelectionCountInNaver(seatSelectionCountInNaver)
-                .concentrationSelectionCountInNaver(concentrationSelectionCountInNaver)
+                .averageScore(averageScore)
+                .studyScore(studyScore)
+                .seatSelectionCount(seatSelectionCount)
+                .concentrationSelectionCount(concentrationSelectionCount)
+                .totalReviewCount(totalReviewCount)
+                .zone(zone)
                 .build();
     }
 }
