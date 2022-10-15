@@ -57,13 +57,18 @@ public class ReviewService {
 
     @Transactional
     public Long update(Long reviewId, ReviewUpdateRequestDto requestDto) {
-        log.info("{}", requestDto.toString());
         Review review = reviewRepository.findById(reviewId).orElseThrow(() -> new IllegalArgumentException("해당하는 id의 리뷰가 없습니다"));
         User user = userRepository.findById(requestDto.getUserId()).orElseThrow(() -> new IllegalArgumentException("해당하는 id의 유저가 없습니다"));
         Cafe cafe = cafeRepository.findById(requestDto.getCafeId()).orElseThrow(() -> new IllegalArgumentException("해당하는 id의 카페가 없습니다"));
 
         review.update(requestDto, user, cafe);
         return review.getId();
+    }
+
+    @Transactional
+    public void delete(Long reviewId) {
+        reviewRepository.findById(reviewId).orElseThrow(() -> new IllegalArgumentException("해당 id의 리뷰가 존재하지 않습니다."));
+        reviewRepository.deleteById(reviewId);
     }
 
 }
