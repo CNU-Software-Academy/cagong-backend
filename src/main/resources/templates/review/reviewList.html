@@ -36,17 +36,23 @@
             <thead>
             <tr>
                 <th class="col-sm-1" scope="col">번호</th>
-                <th class="col-sm-6" scope="col">유저아이디</th>
-                <th class="col-sm-2" scope="col">카페아이디</th>
-                <th class="col-sm-1" scope="col">생성일자</th>
-                <th class="col-sm-1" scope="col">수정일자</th>
+                <th class="col-sm-1" scope="col">유저아이디</th>
+                <th class="col-sm-1" scope="col">카페아이디</th>
+                <th class="col-sm-2" scope="col">생성일자</th>
+                <th class="col-sm-2" scope="col">수정일자</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="review : ${reviewList}">
-                <th scope="row">[[${review.id}]]</th>>
-                <th scope="row">[[${review.userId}]]</th>>
-                <th scope="row">[[${review.cafeId}]]</th>>
+                <th scope="row">
+                    <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.id}"></a>
+                </th>>
+                <th scope="row">
+                    <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.userId}"></a>
+                </th>>
+                <th scope="row">
+                    <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.cafeId}"></a>
+                </th>>
                 <td th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#temporals.format(review.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
