@@ -1,5 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
+import kr.ac.cnu.swacademy.cagong.dto.ReviewUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -68,5 +69,15 @@ public class Review extends BaseTimeEntity {
 
         this.cafe = cafe;
         cafe.getReviews().add(this);
+    }
+
+    public void update(ReviewUpdateRequestDto requestDto, User user, Cafe cafe) {
+        this.user = user;
+        this.cafe = cafe;
+        this.imageUrl = requestDto.getImageUrl();
+        this.seat = requestDto.getSeat();
+        this.clean = requestDto.getClean();
+        this.concentration = requestDto.getConcentration();
+        this.content = requestDto.getContent();
     }
 }
