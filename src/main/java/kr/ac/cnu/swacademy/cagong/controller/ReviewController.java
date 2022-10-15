@@ -1,6 +1,7 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
 import kr.ac.cnu.swacademy.cagong.dto.ReviewListResponseDto;
+import kr.ac.cnu.swacademy.cagong.dto.ReviewResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.ReviewSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.service.CafeService;
 import kr.ac.cnu.swacademy.cagong.service.ReviewService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -43,5 +45,12 @@ public class ReviewController {
         model.addAttribute("userIdList", userIdList);
         model.addAttribute("cafeIdList", cafeIdList);
         return "review/saveForm";
+    }
+
+    @GetMapping("/review/{reviewId}")
+    public String reviewDetail(@PathVariable Long reviewId, Model model) {
+        ReviewResponseDto responseDto = reviewService.findById(reviewId);
+        model.addAttribute("review", responseDto);
+        return "review/detail";
     }
 }
