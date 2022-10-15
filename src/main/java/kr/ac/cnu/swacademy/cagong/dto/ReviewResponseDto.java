@@ -1,9 +1,11 @@
 package kr.ac.cnu.swacademy.cagong.dto;
 
 import kr.ac.cnu.swacademy.cagong.entity.Review;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class ReviewResponseDto {
 
     private Long id;
@@ -30,6 +32,5 @@ public class ReviewResponseDto {
         this.seat = review.getSeat();
         this.concentration = review.getConcentration();
         this.imageUrl = review.getImageUrl();
-
     }
 }
