@@ -15,7 +15,7 @@ import java.util.List;
 public class CafeDistanceApiController {
     private final CafeDistanceService cafeDistanceService;
 
-    @GetMapping("/api/cafes/search/ldptj ocation")
+    @GetMapping("/api/cafes/search/location")
     public List<SortedCafeDto> cafeList(@RequestParam double longitude,
                                         @RequestParam double latitude) {
         return cafeDistanceService.findAll(new LocationDto(longitude, latitude));
