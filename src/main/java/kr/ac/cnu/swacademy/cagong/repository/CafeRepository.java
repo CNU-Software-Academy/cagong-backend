@@ -16,4 +16,6 @@ public interface CafeRepository extends JpaRepository<Cafe, Long> {
     List<Cafe> findAllByOrderByStudyScoreDesc();
 
     List<Cafe> findAllByOrderByAveragePriceAsc();
+
+    List<Cafe> findAllByOrderByAverageScoreDesc();
 }
