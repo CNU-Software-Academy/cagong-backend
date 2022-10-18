@@ -21,7 +21,7 @@ public class CafeDistanceApiController {
         return cafeDistanceService.findAll(new LocationDto(longitude, latitude));
     }
 
-    @GetMapping("/api/cafes/search/location/study_score")
+    @GetMapping("/api/cafes/search/location/study-score")
     public List<SortedCafeDto> cafeListOrderByStudyScore(@RequestParam double longitude,
                                                          @RequestParam double latitude) {
         return cafeDistanceService.findAllOrderByStudyScore(new LocationDto(longitude, latitude));
