@@ -12,4 +12,10 @@ public interface CafeRepository extends JpaRepository<Cafe, Long> {
     List<Cafe> findAllDesc();
 
     List<Cafe> findByNameLike(String keyword);
+
+    List<Cafe> findAllByOrderByStudyScoreDesc();
+
+    List<Cafe> findAllByOrderByAveragePriceAsc();
+
+    List<Cafe> findAllByOrderByAverageScoreDesc();
 }

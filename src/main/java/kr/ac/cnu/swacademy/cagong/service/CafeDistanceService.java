@@ -14,14 +14,35 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class CafeDistanceService {
 
     private final CafeRepository cafeRepository;
 
-    @Transactional(readOnly = true)
     public List<SortedCafeDto> findAll(LocationDto locationDto) {
         List<Cafe> cafes = cafeRepository.findAll();
+        List<SortedCafeDto> sortedCafes = new ArrayList<>();
+        addCafe(locationDto, cafes, sortedCafes);
+        Collections.sort(sortedCafes);
+        return sortedCafes;
+    }
+
+    public List<SortedCafeDto> findAllOrderByStudyScore(LocationDto locationDto) {
+        List<Cafe> cafes = cafeRepository.findAllByOrderByStudyScoreDesc();
+        List<SortedCafeDto> sortedCafes = new ArrayList<>();
+        addCafe(locationDto, cafes, sortedCafes);
+        return sortedCafes;
+    }
+
+    public List<SortedCafeDto> findAllOrderByAveragePrice(LocationDto locationDto) {
+        List<Cafe> cafes = cafeRepository.findAllByOrderByAveragePriceAsc();
+        List<SortedCafeDto> sortedCafes = new ArrayList<>();
+        addCafe(locationDto, cafes, sortedCafes);
+        return sortedCafes;
+    }
+
+    public List<SortedCafeDto> findAllOrderByAverageScore(LocationDto locationDto) {
+        List<Cafe> cafes = cafeRepository.findAllByOrderByAverageScoreDesc();
         List<SortedCafeDto> sortedCafes = new ArrayList<>();
         addCafe(locationDto, cafes, sortedCafes);
         return sortedCafes;
@@ -31,13 +52,12 @@ public class CafeDistanceService {
         for (Cafe cafe : cafes) {
             double distance = distance(locationDto.getLatitude(), locationDto.getLongitude(), cafe.getLatitude(), cafe.getLongitude());
             filterOneKm(sortedCafes, cafe, distance);
-            Collections.sort(sortedCafes);
         }
     }
 
     private void filterOneKm(List<SortedCafeDto> sortedCafes, Cafe cafe, double distance) {
         if (distance < 1000) {
-            sortedCafes.add(new SortedCafeDto(cafe.getId(), cafe.getName(), distance));
+            sortedCafes.add(new SortedCafeDto(cafe.getId(), cafe.getName(), distance, cafe.getStudyScore(), cafe.getAveragePrice(), cafe.getAverageScore()));
         }
     }
 
