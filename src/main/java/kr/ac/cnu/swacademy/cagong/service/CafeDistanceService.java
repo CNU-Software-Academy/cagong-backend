@@ -34,6 +34,13 @@ public class CafeDistanceService {
         return sortedCafes;
     }
 
+    public List<SortedCafeDto> findAllOrderByAveragePrice(LocationDto locationDto) {
+        List<Cafe> cafes = cafeRepository.findAllByOrderByAveragePriceAsc();
+        List<SortedCafeDto> sortedCafes = new ArrayList<>();
+        addCafe(locationDto, cafes, sortedCafes);
+        return sortedCafes;
+    }
+
     private void addCafe(LocationDto locationDto, List<Cafe> cafes, List<SortedCafeDto> sortedCafes) {
         for (Cafe cafe : cafes) {
             double distance = distance(locationDto.getLatitude(), locationDto.getLongitude(), cafe.getLatitude(), cafe.getLongitude());

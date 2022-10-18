@@ -27,4 +27,10 @@ public class CafeDistanceApiController {
         return cafeDistanceService.findAllOrderByStudyScore(new LocationDto(longitude, latitude));
     }
 
+    @GetMapping("/api/cafes/search/location/average-price")
+    public List<SortedCafeDto> cafeListOrderByAveragePrice(@RequestParam double longitude,
+                                                         @RequestParam double latitude) {
+        return cafeDistanceService.findAllOrderByAveragePrice(new LocationDto(longitude, latitude));
+    }
+
 }
