@@ -9,6 +9,9 @@ public class SortedCafeDto implements Comparable<SortedCafeDto> {
     private Long id;
     private String name;
     private double distance;
+    private double studyScore;
+    private double averagePrice;
+    private double averageScore;
 
     @Override
     public int compareTo(SortedCafeDto o) {
