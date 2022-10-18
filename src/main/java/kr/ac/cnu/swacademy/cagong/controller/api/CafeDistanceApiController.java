@@ -38,5 +38,4 @@ public class CafeDistanceApiController {
                                                            @RequestParam double latitude) {
         return cafeDistanceService.findAllOrderByAverageScore(new LocationDto(longitude, latitude));
     }
-
 }
