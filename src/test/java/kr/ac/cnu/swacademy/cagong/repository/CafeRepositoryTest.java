@@ -25,8 +25,6 @@ class CafeRepositoryTest {
         cafe = Cafe.builder()
                 .name("이디야 대전유성온천역점(봉명동)")
                 .address("34179 대전광역시 유성구 계룡로 92 cj나인파크 101-1호 이디야")
-                .latitude(36.3536039)
-                .longitude(127.3406953)
                 .build();
 
         cafeRepository.save(cafe);
