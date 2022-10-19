@@ -1,6 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
-import kr.ac.cnu.swacademy.cagong.service.question.QuestionService;
+import kr.ac.cnu.swacademy.cagong.service.QuestionService;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

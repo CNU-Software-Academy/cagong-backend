@@ -10,6 +10,9 @@ let main = {
         $('#btn-delete').on('click',function (){
             _this.delete();
         });
+        $("#btn-answer-save").on("click", function (){
+            _this.answerSave();
+        });
     },
     save : function () {
         let data = {
@@ -65,7 +68,40 @@ let main = {
         }).fail(function (error){
             console.log(error);
         });
-    }
+    },
+
+    answerSave: function(){
+        let data = {
+            userId: $("#userId").val(),
+            questionId: $("#questionId").val(),
+            comment: $("#answer-comment").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: `/api/question/${data.questionId}/answer`,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function(resp){
+            alert("답변이 등록되었습니다.");
+            location.href = `/question/${data.questionId}`;
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
+    answerDelete : function(questionId, answerId){
+        $.ajax({
+            type: "DELETE",
+            url: `/api/question/${questionId}/answer/${answerId}`,
+            dataType: "json"
+        }).done(function(resp){
+            alert("답변이 삭제되었습니다.");
+            location.href = `/question/${questionId}`;
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
 
 };
 

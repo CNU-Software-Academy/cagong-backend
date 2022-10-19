@@ -2,10 +2,9 @@ package kr.ac.cnu.swacademy.cagong.controller.api;
 
 import kr.ac.cnu.swacademy.cagong.dto.AnswerDto.AnswerSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.AnswerDto.ResponseDto;
-import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionUpdateRequestDto;
-import kr.ac.cnu.swacademy.cagong.service.question.QuestionService;
+import kr.ac.cnu.swacademy.cagong.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +33,15 @@ public class QuestionApiController {
         return id;
     }
 
-    @PostMapping("/api/question/{question_id}/answer")
+    @PostMapping("/api/question/{questionId}/answer")
     public ResponseDto<Integer> answerSave(@RequestBody AnswerSaveRequestDto answerSaveRequestDto){
-        questionService.댓글쓰기(answerSaveRequestDto);
+        questionService.commentSave(answerSaveRequestDto);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @DeleteMapping("/api/question/{questionId}/answer/{answerId}")
+    public ResponseDto<Integer> answerDelete(@PathVariable Long answerId){
+        questionService.commentDelete(answerId);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }
