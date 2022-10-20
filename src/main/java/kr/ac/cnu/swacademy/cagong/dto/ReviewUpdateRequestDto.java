@@ -3,16 +3,14 @@ package kr.ac.cnu.swacademy.cagong.dto;
 import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import kr.ac.cnu.swacademy.cagong.entity.Review;
 import kr.ac.cnu.swacademy.cagong.entity.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @NoArgsConstructor
 @Setter
 @Getter
-public class ReviewSaveRequestDto {
+@ToString
+public class ReviewUpdateRequestDto {
 
     private String content;
     private int clean;
@@ -23,14 +21,14 @@ public class ReviewSaveRequestDto {
     private Long cafeId;
 
     @Builder
-    public ReviewSaveRequestDto(
+    public ReviewUpdateRequestDto(
             String content,
             int clean,
             int seat,
             int concentration,
             String imageUrl,
             Long userId,
-            Long cafeIds
+            Long cafeId
     ) {
         this.content = content;
         this.clean = clean;

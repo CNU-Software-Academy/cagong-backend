@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <title>cagong</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        main {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+            max-height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4">CaGong</span>
+        </a>
+        <hr>
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+    </div>
+    <div class="b-example-divider"></div>
+    <div class="container mt-3 " style="width: 800px">
+        <button class="btn btn-success" th:onclick="history.back()">돌아가기</button>
+
+        <!--           todo: 관리자 필요-->
+        <span>
+            <a th:href="@{/review/update/{id}(id=${review.id})}" class="btn btn-warning">수정</a>
+            <button id="btn-delete" class="btn btn-danger">삭제</button>
+        </span>
+        <br/> <br/>
+        <div>
+            <span>글번호 : </span>
+            <span id="id" th:text="${review.id}"></span>
+            <span> | </span>
+            <span>작성자 : </span>
+            <span id="userId" th:text="${review.userId}"></span>
+            <span> | </span>
+            <span>등록일 </span>
+            <span th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}"></span>
+            <span> | </span>
+            <span>수정일 </span>
+            <span th:text="${#temporals.format(review.updatedAt, 'yyyy-MM-dd')}"></span>
+            <span> | </span>
+        </div>
+        <br/>
+        <div>
+            <h3></h3>
+        </div>
+        <hr/>
+        <div th:text="${review.content}"></div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/review.js}"></script>
+</main>
+</body>
+</html>
