@@ -56,7 +56,7 @@ let main = {
     },
     delete : function (){
         let id = $('#id').text();
-
+        if(confirm("질문을 삭제하시겠습니까?")){
         $.ajax({
             type: 'DELETE',
             url: '/api/v1/question/'+ parseInt(id),
@@ -68,6 +68,7 @@ let main = {
         }).fail(function (error){
             console.log(error);
         });
+        }
     },
 
     answerSave: function(){
@@ -91,16 +92,18 @@ let main = {
         });
     },
     answerDelete : function(questionId, answerId){
-        $.ajax({
-            type: "DELETE",
-            url: `/api/question/${questionId}/answer/${answerId}`,
-            dataType: "json"
-        }).done(function(resp){
-            alert("답변이 삭제되었습니다.");
-            location.href = `/question/${questionId}`;
-        }).fail(function(error){
-            alert(JSON.stringify(error));
-        });
+        if(confirm("답변을 삭제하시겠습니까?")) {
+            $.ajax({
+                type: "DELETE",
+                url: `/api/question/${questionId}/answer/${answerId}`,
+                dataType: "json"
+            }).done(function(resp){
+                alert("답변이 삭제되었습니다.");
+                location.href = `/question/${questionId}`;
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });
+        }
     },
 
 };
