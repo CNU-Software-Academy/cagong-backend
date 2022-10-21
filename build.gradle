@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	runtimeOnly 'mysql:mysql-connector-java'
 	runtimeOnly 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
