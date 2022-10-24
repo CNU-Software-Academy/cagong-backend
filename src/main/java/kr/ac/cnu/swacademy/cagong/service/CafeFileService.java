@@ -36,7 +36,8 @@ public class CafeFileService {
                         Integer.parseInt(arr[7]),
                         Integer.parseInt(arr[8]),
                         Integer.parseInt(arr[9]),
-                        arr[10]
+                        arr[10],
+                        arr[11]
                         );
                 cafeRepository.save(cafe);
             }

@@ -45,6 +45,8 @@ public class Cafe extends BaseTimeEntity {
 
     private String zone;
 
+    private String description;
+
     @OneToMany(mappedBy = "cafe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
@@ -60,7 +62,9 @@ public class Cafe extends BaseTimeEntity {
                 int seatSelectionCount,
                 int concentrationSelectionCount,
                 int totalReviewCount,
-                String zone) {
+                String zone,
+                String description
+    ) {
         this.name = name;
         this.address = address;
         this.latitude = latitude;
@@ -72,6 +76,7 @@ public class Cafe extends BaseTimeEntity {
         this.concentrationSelectionCount = concentrationSelectionCount;
         this.totalReviewCount = totalReviewCount;
         this.zone = zone;
+        this.description = description;
     }
 
     public void addReview(Review review) {
