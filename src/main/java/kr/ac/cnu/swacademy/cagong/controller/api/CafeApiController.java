@@ -30,7 +30,7 @@ public class CafeApiController {
     @GetMapping("/api/cafes/search/keyword/{keyword}")
     public ResponseEntity<List<CafeResponseDto>> findByKeyword(@PathVariable String keyword, @RequestParam(name = "sortBy", defaultValue = "", required = false) String sortBy) {
 
-        if(!List.of("", "average_score", "average_price").contains(sortBy)) {
+        if(!List.of("", "average_score", "average_price", "study_score").contains(sortBy)) {
             throw new SortingNotFoundException(String.format("%s is misaligned. \nThe permissible sorting method are average_score and average_price.", sortBy));
         }
         return ResponseEntity.ok(cafeService.findByKeyword(keyword, sortBy));
