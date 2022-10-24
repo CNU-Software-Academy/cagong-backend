@@ -45,7 +45,7 @@ public class CafeService {
             cafes.sort(Comparator.comparingDouble(Cafe::getAveragePrice));
         }
         if(sortBy.equals("study_score")) {
-            cafes.sort(Comparator.comparingDouble(Cafe::getStudyScore));
+            cafes.sort(Comparator.comparingDouble(Cafe::getStudyScore).reversed());
         }
         return cafes.stream()
                 .map(CafeResponseDto::new)
