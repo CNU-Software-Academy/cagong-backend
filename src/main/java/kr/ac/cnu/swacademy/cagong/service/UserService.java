@@ -16,15 +16,15 @@ public class UserService {
     public String join(User user) {
         userRepository.save(User.builder()
                 .username(user.getUsername())
-                .pw(user.getPw())
+                .password(user.getPassword())
                 .build());
         return "Success";
     }
 
-    public String login(String username, String pw) {
+    public String login(String username, String password) {
         User user = userRepository.findByUsername(username);
-        log.info("db password = {}, input password = {}", user.getPw(), pw);
-        if (user.getPw().equals(pw)) {
+        log.info("db password = {}, input password = {}", user.getPassword(), password);
+        if (user.getPassword().equals(password)) {
             return "Success";
         }
         return "Failed";

@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/join")
     public ResponseEntity join(@RequestBody User user) {
-        log.info("username = {}, password = {}", user.getUsername(), user.getPw());
+        log.info("username = {}, password = {}", user.getUsername(), user.getPassword());
         if (userService.join(user).equals("Success")) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
@@ -33,8 +33,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody User user, HttpServletRequest request) {
-        log.info("username = {}, password = {}", user.getUsername(), user.getPw());
-        if (userService.login(user.getUsername(), user.getPw()).equals("Success")) {
+        log.info("username = {}, password = {}", user.getUsername(), user.getPassword());
+        if (userService.login(user.getUsername(), user.getPassword()).equals("Success")) {
             return new ResponseEntity(HttpStatus.OK);
         }
         // 세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성

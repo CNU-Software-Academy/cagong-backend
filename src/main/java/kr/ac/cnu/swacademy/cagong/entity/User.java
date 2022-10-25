@@ -23,14 +23,17 @@ public class User extends BaseTimeEntity {
     private String username;
 
     @NotBlank
-    private String pw;
+    private String password;
 
     @Column(unique = true, length = 45)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Builder
-    public User(String username, String pw) {
+    public User(String username, String password) {
         this.username = username;
-        this.pw = pw;
+        this.password = password;
     }
 }
