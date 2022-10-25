@@ -1,5 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.repository;
 
+import groovy.util.logging.Slf4j;
 import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,13 +22,9 @@ class CafeRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        Random randomGenerator = new Random();
-
         cafe = Cafe.builder()
-                .name("스타벅스 충남대 정문점")
-                .address("대전 유성구 대학로 82")
-                .latitude(randomGenerator.nextDouble())
-                .longitude(randomGenerator.nextDouble())
+                .name("이디야 대전유성온천역점(봉명동)")
+                .address("34179 대전광역시 유성구 계룡로 92 cj나인파크 101-1호 이디야")
                 .build();
 
         cafeRepository.save(cafe);
@@ -50,11 +45,10 @@ class CafeRepositoryTest {
 
     @Test
     void 카페이름으로_조회하기() {
-        Optional<Cafe> givenCafe = cafeRepository.findByName(cafe.getName());
+
+        List<Cafe> givenCafe = cafeRepository.findByNameLike("%" + cafe.getName() + "%");
 
         assertThat(givenCafe).isNotEmpty();
-        assertThat(givenCafe.get().getName()).isEqualTo(cafe.getName());
+        assertThat(givenCafe.get(0).getName()).isEqualTo(cafe.getName());
     }
-
-
 }

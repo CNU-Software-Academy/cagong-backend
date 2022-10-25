@@ -8,9 +8,13 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
         use_sql_comments: true
         default_batch_fetch_size: 100
+
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
