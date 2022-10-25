@@ -11,7 +11,7 @@ public class FileController {
 
     private final CafeFileService cafeFileService;
 
-    @GetMapping("/cafeFile")
+    @GetMapping("/admin/cafeFile")
     public String cafeFile() {
         cafeFileService.save();
         return "ok";
