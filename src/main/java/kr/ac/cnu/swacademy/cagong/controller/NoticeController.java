@@ -29,13 +29,13 @@ public class NoticeController {
         return "notice/detail";
     }
 
-    @GetMapping("/notice/save")
+    @GetMapping("/admin/notice/save")
     public String noticeSave(Model model) {
         model.addAttribute("saveForm", new NoticeSaveRequestDto());
         return "notice/saveForm";
     }
 
-    @GetMapping("/notice/update/{id}")
+    @GetMapping("/admin/notice/update/{id}")
     public String noticeUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("notice", noticeService.findById(id));
         return "notice/updateForm";
