@@ -8,13 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 
 @SpringBootTest
@@ -31,7 +29,7 @@ class UserApiControllerTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public User createUser(String username, String password){
+    public User createUser(String username, String password) {
         UserFormDto userFormDto = new UserFormDto();
         userFormDto.setEmail("test@email.com");
         userFormDto.setUsername(username);
@@ -42,19 +40,19 @@ class UserApiControllerTest {
 
     @Test
     @DisplayName("로그인 성공 테스트")
-    public void loginSuccessTest() throws Exception{
+    public void loginSuccessTest() throws Exception {
         String username = "홍길동";
         String password = "1234";
         this.createUser(username, password);
         mockMvc.perform(formLogin().userParameter("username")
-                        .loginProcessingUrl("/users/login")
+                        .loginProcessingUrl("/login")
                         .user(username).password(password))
                 .andExpect(SecurityMockMvcResultMatchers.authenticated());
     }
 
     @Test
     @DisplayName("로그인 실패 테스트")
-    public void loginFailTest() throws Exception{
+    public void loginFailTest() throws Exception {
         String username = "홍길동";
         String password = "1234";
         this.createUser(username, password);
