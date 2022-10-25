@@ -1,6 +1,9 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@Table(name="cafes")
+@Table(name = "cafes")
 @Entity
 @Getter
 @ToString
@@ -52,18 +55,18 @@ public class Cafe extends BaseTimeEntity {
 
     @Builder
     public Cafe(
-                String name,
-                String address,
-                double latitude,
-                double longitude,
-                double averagePrice,
-                double averageScore,
-                double studyScore,
-                int seatSelectionCount,
-                int concentrationSelectionCount,
-                int totalReviewCount,
-                String zone,
-                String description
+            String name,
+            String address,
+            double latitude,
+            double longitude,
+            double averagePrice,
+            double averageScore,
+            double studyScore,
+            int seatSelectionCount,
+            int concentrationSelectionCount,
+            int totalReviewCount,
+            String zone,
+            String description
     ) {
         this.name = name;
         this.address = address;

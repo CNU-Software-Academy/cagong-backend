@@ -15,7 +15,7 @@ public class QuestionResponseDto {
     private List<Answer> answers;
     private LocalDateTime createdAt;
 
-    public QuestionResponseDto(Question entity){
+    public QuestionResponseDto(Question entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();

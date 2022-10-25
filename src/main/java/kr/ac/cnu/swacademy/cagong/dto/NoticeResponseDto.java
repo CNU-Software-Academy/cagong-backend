@@ -12,7 +12,7 @@ public class NoticeResponseDto {
     private String content;
     private LocalDateTime createdAt;
 
-    public NoticeResponseDto (Notice entity) {
+    public NoticeResponseDto(Notice entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();

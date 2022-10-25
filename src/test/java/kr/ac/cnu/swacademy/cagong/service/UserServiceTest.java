@@ -42,5 +42,4 @@ class UserServiceTest {
         });
         assertThat(e.getMessage()).isEqualTo("이미 가입된 회원입니다.");
     }
-
 }

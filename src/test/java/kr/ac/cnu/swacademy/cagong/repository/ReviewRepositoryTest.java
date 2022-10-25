@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -22,7 +21,8 @@ class ReviewRepositoryTest {
     ReviewRepository reviewRepository;
 
     @BeforeEach
-    void setup() {}
+    void setup() {
+    }
 
     @AfterEach
     void cleanUp() {
