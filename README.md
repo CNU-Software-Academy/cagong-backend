@@ -16,5 +16,4 @@
 - `Slack`
 - `Git`
 ## 🍭ERD
-![erd](https://user-images.githubusercontent.com/96678352/197826036-22503b57-963e-4d73-9d76-7c65f234b6be.png)
 ## 🥯Architecture
