@@ -1,24 +1,29 @@
 package kr.ac.cnu.swacademy.cagong.service;
 
+
 import kr.ac.cnu.swacademy.cagong.entity.User;
 import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static org.springframework.security.core.userdetails.User.*;
 
 @Slf4j
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public String join(User user) {
+    public User join(User user) {
         validateDuplicateUser(user);
-        userRepository.save(user);
-        return "Success";
+        return userRepository.save(user);
     }
 
     private void validateDuplicateUser(User user){
@@ -35,5 +40,20 @@ public class UserService {
             return "Success";
         }
         return "Failed";
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+
+        if(user == null){
+            throw new UsernameNotFoundException(username);
+        }
+
+        return builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .roles(user.getRole().toString())
+                .build();
     }
 }
