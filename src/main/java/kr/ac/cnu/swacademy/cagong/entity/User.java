@@ -1,14 +1,14 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="users")
 @Entity
 public class User extends BaseTimeEntity {
@@ -27,4 +27,10 @@ public class User extends BaseTimeEntity {
 
     @Column(unique = true, length = 45)
     private String email;
+
+    @Builder
+    public User(String username, String pw) {
+        this.username = username;
+        this.pw = pw;
+    }
 }
