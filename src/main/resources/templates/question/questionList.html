@@ -50,8 +50,26 @@
             </tr>
             </tbody>
         </table>
-    </div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled " th:if="${questionList.first}">
+                <a class="page-link"
+                   th:href="@{/question(page=|${questionList.number-1}|)}">Previous</a>
+            </li>
+            <li class="page-item" th:unless="${questionList.first}">
+                <a class="page-link page-link-success"
+                   th:href="@{/question(page=|${questionList.number-1}|)}">Previous</a>
+            </li>
 
+            <li class="page-item disabled" th:if="${questionList.last}">
+                <a class="page-link"
+                   th:href="@{/question(page=|${questionList.number+1}|)}">Next</a>
+            </li>
+            <li class="page-item" th:unless="${questionList.last}">
+                <a class="page-link"
+                   th:href="@{/question(page=|${questionList.number+1}|)}">Next</a>
+            </li>
+        </ul>
+    </div>
 </main>
 </body>
 </html>

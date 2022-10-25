@@ -3,6 +3,8 @@ package kr.ac.cnu.swacademy.cagong.controller;
 import kr.ac.cnu.swacademy.cagong.service.QuestionService;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,9 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("/question")
-    public String questionList(Model model){
-        model.addAttribute("questionList", questionService.findAllDesc());
+    public String questionList(Model model,
+                               @PageableDefault(size = 10) Pageable pageable){
+        model.addAttribute("questionList", questionService.findAllDesc(pageable));
         return "question/questionList";
     }
 
