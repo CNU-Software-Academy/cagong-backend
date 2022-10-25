@@ -1,5 +1,7 @@
 package kr.ac.cnu.swacademy.cagong.config;
 
+import kr.ac.cnu.swacademy.cagong.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,9 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
+
+    private final UserService userService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -19,11 +24,11 @@ public class SecurityConfig {
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .permitAll()
-//                .and()
-//                .formLogin()
-//                .loginPage("/users/login")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/")
+                .and()
+                .formLogin()
+                .loginPage("/users/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/")
                 .and().build();
     }
 
@@ -31,4 +36,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
