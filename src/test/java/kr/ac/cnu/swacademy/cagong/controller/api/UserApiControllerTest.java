@@ -61,5 +61,4 @@ class UserApiControllerTest {
                         .user(username).password("12345"))
                 .andExpect(SecurityMockMvcResultMatchers.unauthenticated());
     }
-
 }

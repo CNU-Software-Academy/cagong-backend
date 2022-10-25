@@ -9,7 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -29,22 +32,22 @@ public class CafeService {
         StringTokenizer st = new StringTokenizer(keyword, " ");
         List<Cafe> cafes = new ArrayList<>();
 
-        while(st.hasMoreTokens()) {
+        while (st.hasMoreTokens()) {
             String keywordToken = st.nextToken();
             List<Cafe> cafesToken = cafeRepository.findByNameLike("%" + keywordToken + "%");
-            if(cafes.isEmpty()) {
+            if (cafes.isEmpty()) {
                 cafes.addAll(cafesToken);
-            }else {
+            } else {
                 cafes.retainAll(cafesToken);
             }
         }
-        if(sortBy.equals("average_score")) {
+        if (sortBy.equals("average_score")) {
             cafes.sort(Comparator.comparingDouble(Cafe::getAverageScore).reversed());
         }
-        if(sortBy.equals("average_price")) {
+        if (sortBy.equals("average_price")) {
             cafes.sort(Comparator.comparingDouble(Cafe::getAveragePrice));
         }
-        if(sortBy.equals("study_score")) {
+        if (sortBy.equals("study_score")) {
             cafes.sort(Comparator.comparingDouble(Cafe::getStudyScore).reversed());
         }
         return cafes.stream()

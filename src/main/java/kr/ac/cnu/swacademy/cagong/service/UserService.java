@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.springframework.security.core.userdetails.User.*;
+import static org.springframework.security.core.userdetails.User.builder;
 
 @Slf4j
 @Transactional
@@ -26,9 +26,9 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    private void validateDuplicateUser(User user){
+    private void validateDuplicateUser(User user) {
         User findUser = userRepository.findByUsername(user.getUsername());
-        if(findUser != null){
+        if (findUser != null) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException(username);
         }
 

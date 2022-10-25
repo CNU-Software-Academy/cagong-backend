@@ -45,7 +45,7 @@ public class User extends BaseTimeEntity {
         this.role = role;
     }
 
-    public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder){
+    public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
         String username = userFormDto.getUsername();
         String password = passwordEncoder.encode(userFormDto.getPassword());
         Role role = getRole(username);

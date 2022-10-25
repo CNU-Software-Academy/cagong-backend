@@ -14,13 +14,13 @@ public class QuestionSaveRequestDto {
     private User user;
 
     @Builder
-    public QuestionSaveRequestDto(String title, String content, User user){
+    public QuestionSaveRequestDto(String title, String content, User user) {
         this.title = title;
         this.content = content;
         this.user = user;
     }
 
-    public Question toEntity(){
+    public Question toEntity() {
         return Question.builder()
                 .title(title)
                 .content(content)

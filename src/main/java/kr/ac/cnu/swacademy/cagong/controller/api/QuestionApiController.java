@@ -34,13 +34,13 @@ public class QuestionApiController {
     }
 
     @PostMapping("/api/question/{questionId}/answer")
-    public ResponseDto<Integer> answerSave(@RequestBody AnswerSaveRequestDto answerSaveRequestDto){
+    public ResponseDto<Integer> answerSave(@RequestBody AnswerSaveRequestDto answerSaveRequestDto) {
         questionService.commentSave(answerSaveRequestDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
     @DeleteMapping("/api/question/{questionId}/answer/{answerId}")
-    public ResponseDto<Integer> answerDelete(@PathVariable Long answerId){
+    public ResponseDto<Integer> answerDelete(@PathVariable Long answerId) {
         questionService.commentDelete(answerId);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
