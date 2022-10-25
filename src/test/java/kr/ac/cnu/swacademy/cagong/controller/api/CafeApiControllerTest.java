@@ -9,9 +9,11 @@ import kr.ac.cnu.swacademy.cagong.service.CafeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -24,7 +26,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(CafeApiController.class)
+@AutoConfigureMockMvc
+@SpringBootTest
 class CafeApiControllerTest {
 
     @Autowired
@@ -35,6 +38,7 @@ class CafeApiControllerTest {
 
     private static final String BASE_URL = "/api";
 
+    @WithMockUser(roles = "USER")
     @Test
     @DisplayName("[API][GET] 카페 리스트 조회")
     void findAllDescTest() throws Exception {
@@ -60,6 +64,7 @@ class CafeApiControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    @WithMockUser(roles = "USER")
     @Test
     @DisplayName("[API][GET] 카페 상세 조회")
     void findByIdTest() throws Exception {
@@ -83,6 +88,7 @@ class CafeApiControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    @WithMockUser(roles = "USER")
     @Test
     @DisplayName("[API][GET] 카페 키워드 조회")
     void findByKeywordTest() throws Exception {
@@ -105,6 +111,7 @@ class CafeApiControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    @WithMockUser(roles = "ADMIN")
     @Test
     @DisplayName("[API][GET] 카페 등록")
     void saveTest() throws Exception {
@@ -142,10 +149,10 @@ class CafeApiControllerTest {
 
         // When, Then
         mockMvc.perform(post(BASE_URL + "/cafe")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .accept(MediaType.APPLICATION_JSON)
-                                .characterEncoding("UTF-8")
-                                .content(body))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(body))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("1"))
                 .andDo(MockMvcResultHandlers.print());
