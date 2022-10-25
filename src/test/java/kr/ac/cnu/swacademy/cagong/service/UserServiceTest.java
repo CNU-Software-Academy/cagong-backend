@@ -26,7 +26,7 @@ class UserServiceTest {
     public User createUser() {
         UserFormDto userFormDto = new UserFormDto();
         userFormDto.setEmail("test@email.com");
-        userFormDto.setName("홍길동");
+        userFormDto.setUsername("홍길동");
         userFormDto.setPassword("1234");
         return User.createUser(userFormDto, passwordEncoder);
     }

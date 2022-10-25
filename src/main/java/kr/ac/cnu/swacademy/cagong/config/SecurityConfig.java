@@ -18,12 +18,12 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/users/login")
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/")
+                .permitAll()
+//                .and()
+//                .formLogin()
+//                .loginPage("/users/login")
+//                .loginProcessingUrl("/login")
+//                .defaultSuccessUrl("/")
                 .and().build();
     }
 

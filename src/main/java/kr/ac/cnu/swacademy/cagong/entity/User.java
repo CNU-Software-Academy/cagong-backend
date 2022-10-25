@@ -46,10 +46,10 @@ public class User extends BaseTimeEntity {
     }
 
     public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder){
-        String name = userFormDto.getName();
+        String username = userFormDto.getUsername();
         String password = passwordEncoder.encode(userFormDto.getPassword());
-        Role role = getRole(name);
-        return new User(name, password, userFormDto.getEmail(), role);
+        Role role = getRole(username);
+        return new User(username, password, userFormDto.getEmail(), role);
     }
 
     private static Role getRole(String name) {

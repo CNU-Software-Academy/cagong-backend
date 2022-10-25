@@ -1,11 +1,14 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
+import kr.ac.cnu.swacademy.cagong.dto.UserFormDto;
 import kr.ac.cnu.swacademy.cagong.entity.User;
 import kr.ac.cnu.swacademy.cagong.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -21,10 +25,12 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/join")
-    public ResponseEntity join(@RequestBody User user) {
-        log.info("username = {}, password = {}", user.getUsername(), user.getPassword());
+    public ResponseEntity join(@Valid @RequestBody UserFormDto userFormDto) {
+        log.info("username = {}, password = {}", userFormDto.getUsername(), userFormDto.getPassword());
+        User user = User.createUser(userFormDto, passwordEncoder);
         if (userService.join(user).equals("Success")) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
