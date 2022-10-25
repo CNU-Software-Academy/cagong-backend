@@ -1,15 +1,20 @@
 package kr.ac.cnu.swacademy.cagong.entity;
 
-import lombok.*;
+import kr.ac.cnu.swacademy.cagong.dto.UserFormDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="users")
+@Table(name = "users")
 @Entity
 public class User extends BaseTimeEntity {
 
@@ -18,22 +23,39 @@ public class User extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Column(unique = true, length = 45)
     private String username;
 
-    @NotBlank
+    @NotNull
     private String password;
 
     @Column(unique = true, length = 45)
     private String email;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @Builder
-    public User(String username, String password) {
+    public User(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder){
+        String name = userFormDto.getName();
+        String password = passwordEncoder.encode(userFormDto.getPassword());
+        Role role = getRole(name);
+        return new User(name, password, userFormDto.getEmail(), role);
+    }
+
+    private static Role getRole(String name) {
+        if (name.equals("admin")) {
+            return Role.ADMIN;
+        }
+        return Role.USER;
     }
 }
