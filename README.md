@@ -22,11 +22,11 @@
     <td>
         <img src="https://user-images.githubusercontent.com/96678352/198080979-8cbba1d3-a3d4-4478-85d3-769e5e338a59.png" width="100px" />
     </td>
-  <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198081002-c91fe028-9474-403e-84f4-fb3729f92c4d.png" width="100px" />
-    </td>
-  <td>
+    <td>
         <img src="https://user-images.githubusercontent.com/96678352/198081648-5ac7b22e-d1d8-4749-8416-441d6f1b635b.png" width="100px" />
+    </td>
+    <td>
+        <img src="https://user-images.githubusercontent.com/96678352/198081002-c91fe028-9474-403e-84f4-fb3729f92c4d.png" width="100px" />
     </td>
     <td>  
         <img src="https://user-images.githubusercontent.com/96678352/198081027-47ff30dc-4706-413d-8dac-edd3a9947459.png" width="100px" />
