@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -50,7 +51,7 @@
             </tr>
             </tbody>
         </table>
-        <a href="/notice/save" class="btn btn-primary">작성</a>
+        <a href="/admin/notice/save" class="btn btn-primary" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">작성</a>
         <ul class="pagination justify-content-center">
             <li class="page-item disabled " th:if="${noticeList.first}">
                 <a class="page-link"

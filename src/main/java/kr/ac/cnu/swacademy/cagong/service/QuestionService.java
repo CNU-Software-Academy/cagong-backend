@@ -3,14 +3,12 @@ package kr.ac.cnu.swacademy.cagong.service;
 import kr.ac.cnu.swacademy.cagong.dto.AnswerDto.AnswerSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionListResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionResponseDto;
+import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Answer;
 import kr.ac.cnu.swacademy.cagong.entity.Question;
-import kr.ac.cnu.swacademy.cagong.entity.User;
 import kr.ac.cnu.swacademy.cagong.repository.AnswerRepository;
 import kr.ac.cnu.swacademy.cagong.repository.QuestionRepository;
-import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
-import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +30,7 @@ public class QuestionService {
         return questionRepository.save(requestDto.toEntity()).getId();
     }
 
-    public QuestionResponseDto findById(Long id){
+    public QuestionResponseDto findById(Long id) {
         Question entity = questionRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 질문이 없습니다. id=" + id));
         return new QuestionResponseDto(entity);
@@ -47,13 +45,13 @@ public class QuestionService {
     @Transactional
     public Long update(Long id, QuestionUpdateRequestDto requestDto) {
         Question question = questionRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("해당 질문이 없습니다. id="+id));
+                new IllegalArgumentException("해당 질문이 없습니다. id=" + id));
         question.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
 
     @Transactional
-    public void delete(Long id){
+    public void delete(Long id) {
         Question question = questionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 질문이 없습니다. id = " + id));
         questionRepository.delete(question);
@@ -65,12 +63,12 @@ public class QuestionService {
         answer = new Answer(
                 answerSaveRequestDto.getComment(),
                 questionRepository.findById(answerSaveRequestDto.getQuestionId()).orElseThrow(() -> new IllegalArgumentException("질문 찾기 실패"))
-                );
+        );
         answerRepository.save(answer);
     }
 
     @Transactional
-    public void commentDelete(Long answerId){
+    public void commentDelete(Long answerId) {
         answerRepository.deleteById(answerId);
     }
 }

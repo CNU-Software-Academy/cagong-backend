@@ -1,7 +1,7 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
-import kr.ac.cnu.swacademy.cagong.service.QuestionService;
 import kr.ac.cnu.swacademy.cagong.dto.QuestionDto.QuestionSaveRequestDto;
+import kr.ac.cnu.swacademy.cagong.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -25,7 +25,7 @@ public class QuestionController {
     }
 
     @GetMapping("/question/{id}")
-    public String question(@PathVariable Long id, Model model){
+    public String question(@PathVariable Long id, Model model) {
         model.addAttribute("question", questionService.findById(id));
         return "question/detail";
     }
@@ -37,7 +37,7 @@ public class QuestionController {
     }
 
     @GetMapping("/question/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model){
+    public String questionUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("question", questionService.findById(id));
         return "question/updateForm";
     }

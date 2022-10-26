@@ -2,8 +2,14 @@ package kr.ac.cnu.swacademy.cagong.repository;
 
 import kr.ac.cnu.swacademy.cagong.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+import java.util.Optional;
 
-    User findByUsername(String username);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findByUsername(String Username);
+
+    Optional<User> findById(Long id);
 }

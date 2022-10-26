@@ -1,6 +1,5 @@
 package kr.ac.cnu.swacademy.cagong.repository;
 
-import groovy.util.logging.Slf4j;
 import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
