@@ -41,10 +41,9 @@
     <td><b>Spring Data JPA</b></td>
     <td><b>JUnit5</b></td>
   </tr>
-
 </table>
 
-### 문서/협업
+### **문서/협업**
 
 <table>
   <tr>
