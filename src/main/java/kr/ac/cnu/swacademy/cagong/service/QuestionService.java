@@ -10,6 +10,8 @@ import kr.ac.cnu.swacademy.cagong.entity.Question;
 import kr.ac.cnu.swacademy.cagong.repository.AnswerRepository;
 import kr.ac.cnu.swacademy.cagong.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,10 +37,9 @@ public class QuestionService {
     }
 
     @Transactional(readOnly = true)
-    public List<QuestionListResponseDto> findAllDesc() {
-        return questionRepository.findAllDesc().stream()
-                .map(QuestionListResponseDto::new)
-                .collect(Collectors.toList());
+    public Page<QuestionListResponseDto> findAllDesc(Pageable pageable){
+        return questionRepository.findAllDesc(pageable)
+                .map(QuestionListResponseDto::new);
     }
 
     @Transactional
