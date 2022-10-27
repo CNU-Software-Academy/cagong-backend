@@ -15,9 +15,9 @@ let main = {
         let data = {
             userId: $('#userId').val(),
             cafeId: $('#cafeId').val(),
-            clean: $('#clean').val(),
-            seat: $('#seat').val(),
-            concentration: $('#concentration').val(),
+            totalGrade: $('#totalGrade').val(),
+            seat: $('#seatId').val(),
+            concentration: $('#concentrationId').val(),
             imageUrl: $('#imageUrl').val(),
             content: $('#content').val(),
         };
@@ -39,9 +39,9 @@ let main = {
         let data = {
             userId: $('#userId').val(),
             cafeId: $('#cafeId').val(),
-            clean: $('#clean').val(),
-            seat: $('#seat').val(),
-            concentration: $('#concentration').val(),
+            totalGrade: $('#totalGrade').val(),
+            seat: $('#seatId').val(),
+            concentration: $('#concentrationId').val(),
             imageUrl: $('#imageUrl').val(),
             content: $('#content').val(),
         };

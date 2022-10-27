@@ -9,6 +9,7 @@ import kr.ac.cnu.swacademy.cagong.entity.Review;
 import kr.ac.cnu.swacademy.cagong.entity.User;
 import kr.ac.cnu.swacademy.cagong.repository.CafeRepository;
 import kr.ac.cnu.swacademy.cagong.repository.ReviewRepository;
+import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,6 +44,10 @@ class ReviewServiceTest {
     
     @Mock
     ReviewRepository reviewRepository;
+    @Mock
+    UserRepository userRepository;
+    @Mock
+    CafeRepository cafeRepository;
 
     @BeforeEach
     void set()
@@ -62,20 +67,26 @@ class ReviewServiceTest {
         // given
         ReviewSaveRequestDto requestDto = ReviewSaveRequestDto
                 .builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("fewagewgawe")
                 .imageUrl("aregerahershre")
+                .userId(1L)
+                .cafeId(1L)
                 .build();
+
         User user = new User();
         Cafe cafe = Cafe.builder().build();
 
         Review review = requestDto.toEntity(user, cafe);
         given(reviewRepository.save(any(Review.class))).willReturn(review);
-                
+        given(userRepository.findById(any(Long.class))).willReturn(Optional.of(user));
+        given(cafeRepository.findById(any(Long.class))).willReturn(Optional.of(cafe));
+
+
         // when
-        reviewService.save(requestDto, user, cafe);
+        reviewService.save(requestDto);
 
         // then
         then(reviewRepository).should().save(any(Review.class));

@@ -13,25 +13,25 @@ import lombok.*;
 public class ReviewUpdateRequestDto {
 
     private String content;
-    private int clean;
-    private int seat;
-    private int concentration;
+    private Boolean seat;
+    private Boolean concentration;
     private String imageUrl;
     private Long userId;
     private Long cafeId;
+    private int totalGrade;
 
     @Builder
     public ReviewUpdateRequestDto(
             String content,
-            int clean,
-            int seat,
-            int concentration,
+            int totalGrade,
+            Boolean seat,
+            Boolean concentration,
             String imageUrl,
             Long userId,
             Long cafeId
     ) {
         this.content = content;
-        this.clean = clean;
+        this.totalGrade = totalGrade;
         this.seat = seat;
         this.concentration = concentration;
         this.imageUrl = imageUrl;
@@ -44,7 +44,7 @@ public class ReviewUpdateRequestDto {
                 .user(user)
                 .cafe(cafe)
                 .content(content)
-                .clean(clean)
+                .totalGrade(totalGrade)
                 .seat(seat)
                 .concentration(concentration)
                 .imageUrl(imageUrl)
