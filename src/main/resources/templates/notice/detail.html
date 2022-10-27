@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -34,9 +35,8 @@
     <div class="container mt-3 " style="width: 800px">
         <button class="btn btn-success" th:onclick="history.back()">돌아가기</button>
 
-        <!--           todo: 관리자 필요-->
-        <span>
-            <a th:href="@{/notice/update/{id}(id=${notice.id})}" class="btn btn-warning">수정</a>
+        <span sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a th:href="@{/admin/notice/update/{id}(id=${notice.id})}" class="btn btn-warning">수정</a>
             <button id="btn-delete" class="btn btn-danger">삭제</button>
         </span>
         <br/> <br/>

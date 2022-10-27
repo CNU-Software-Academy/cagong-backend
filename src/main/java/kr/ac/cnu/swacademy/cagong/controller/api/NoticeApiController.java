@@ -1,6 +1,5 @@
 package kr.ac.cnu.swacademy.cagong.controller.api;
 
-import kr.ac.cnu.swacademy.cagong.dto.NoticeResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.NoticeSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.NoticeUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.service.NoticeService;

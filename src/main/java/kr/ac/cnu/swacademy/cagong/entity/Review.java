@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @NoArgsConstructor
-@Table(name="reviews")
+@Table(name = "reviews")
 @Entity
 @Getter
 public class Review extends BaseTimeEntity {
@@ -58,7 +58,7 @@ public class Review extends BaseTimeEntity {
         this.content = content;
         this.imageUrl = imageUrl;
     }
-    
+
     public void setCafe(Cafe cafe) {
         if (Objects.nonNull(this.cafe)) {
             this.cafe.getReviews().remove(this);

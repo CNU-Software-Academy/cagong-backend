@@ -22,7 +22,7 @@ public class CafeFileService {
     public void save() {
         String line;
         try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)){
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arr = line.split(",");
                 Cafe cafe = new Cafe(
@@ -36,8 +36,9 @@ public class CafeFileService {
                         Integer.parseInt(arr[7]),
                         Integer.parseInt(arr[8]),
                         Integer.parseInt(arr[9]),
-                        arr[10]
-                        );
+                        arr[10],
+                        arr[11]
+                );
                 cafeRepository.save(cafe);
             }
         } catch (IOException | NullPointerException e) {

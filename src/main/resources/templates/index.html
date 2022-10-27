@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>카공</h2>
+<ul>
+    <li sec:authorize="isAnonymous()"><a href="/users/login">로그인</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/logout">로그아웃</a></li>
+</ul>
+</body>
+</html>

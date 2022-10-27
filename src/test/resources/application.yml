@@ -4,3 +4,7 @@ spring:
     url: jdbc:h2:mem:test
     username: sa
     password:
+
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher

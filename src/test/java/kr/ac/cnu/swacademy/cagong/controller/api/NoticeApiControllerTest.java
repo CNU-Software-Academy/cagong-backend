@@ -5,15 +5,13 @@ import kr.ac.cnu.swacademy.cagong.dto.NoticeSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.dto.NoticeUpdateRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Notice;
 import kr.ac.cnu.swacademy.cagong.repository.NoticeRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.*;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,14 +81,14 @@ public class NoticeApiControllerTest {
 
         Long updateId = savedNotice.getId();
         String expectedTitle = "title2";
-        String expectedContent ="content2";
+        String expectedContent = "content2";
 
         NoticeUpdateRequestDto requestDto = NoticeUpdateRequestDto.builder()
                 .title(expectedTitle)
                 .content(expectedContent)
                 .build();
 
-        String url = "http://localhost:" + port +"/api/v1/notice/"+ updateId;
+        String url = "http://localhost:" + port + "/api/v1/notice/" + updateId;
 
         //when
         mvc.perform(put(url)

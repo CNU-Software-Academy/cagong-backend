@@ -5,12 +5,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
+    @Query("SELECT c FROM Cafe c ORDER BY c.id DESC")
+    List<Cafe> findAllDesc();
 
-    Optional<Cafe> findByName(String name);
+    List<Cafe> findByNameLike(String keyword);
 
-    @Query("SELECT id FROM Cafe")
-    List<Long> findId();
+    List<Cafe> findAllByOrderByStudyScoreDesc();
+
+    List<Cafe> findAllByOrderByAveragePriceAsc();
+
+    List<Cafe> findAllByOrderByAverageScoreDesc();
 }
