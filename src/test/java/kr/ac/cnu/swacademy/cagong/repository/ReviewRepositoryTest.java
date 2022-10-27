@@ -34,9 +34,9 @@ class ReviewRepositoryTest {
     void 리뷰를_저장한다() {
         // given
         Review review = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
@@ -54,17 +54,17 @@ class ReviewRepositoryTest {
     void 리뷰를_모두_조회한다() {
         // given
         Review review1 = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
 
         Review review2 = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
@@ -84,9 +84,9 @@ class ReviewRepositoryTest {
     void 리뷰를_하나_조회한다() {
         // given
         Review review = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
@@ -105,16 +105,16 @@ class ReviewRepositoryTest {
     void 리뷰를_수정한다() {
         // given
         Review review = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
 
         // when
         Review save = reviewRepository.save(review);
-        save.setConcentration(4);
+        save.setConcentration(false);
 
         // then
         Optional<Review> found = reviewRepository.findById(save.getId());
@@ -128,9 +128,9 @@ class ReviewRepositoryTest {
     void 리뷰를_삭제한다() {
         // given
         Review review = Review.builder()
-                .clean(5)
-                .concentration(5)
-                .seat(5)
+                .totalGrade(5)
+                .concentration(true)
+                .seat(true)
                 .content("hello")
                 .imageUrl("greagerg")
                 .build();
