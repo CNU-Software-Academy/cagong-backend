@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .loginPage("/users/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
+                .failureUrl("/users/login/error")
                 .and().build();
     }
 
