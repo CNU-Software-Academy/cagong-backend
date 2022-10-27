@@ -30,7 +30,7 @@ public class ReviewSaveRequestDto {
             Boolean concentration,
             String imageUrl,
             Long userId,
-            Long cafeIds
+            Long cafeId
     ) {
         this.content = content;
         this.totalGrade = totalGrade;
