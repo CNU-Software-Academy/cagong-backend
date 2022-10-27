@@ -42,21 +42,22 @@
             <option th:each="cafeId : ${cafeIdList}" th:value="${cafeId}" id="cafeId" th:text="${cafeId}"></option>
 
         </select>
-        clean
+        totalGrade
         <div class="mb-3">
-            <input type="number" class="form-control"  id="clean" th:field="${review.clean}"
-                   placeholder="clean을 입력해주세요">
+            <input type="number" class="form-control"  id="totalGrade" th:field="${review.totalGrade}"
+                   placeholder="totalGrade을 입력해주세요">
         </div>
         Seat
-        <div class="mb-3">
-            <input type="number" class="form-control"  id="seat" th:field="${review.seat}"
-                   placeholder="seat을 입력해주세요">
-        </div>
+        <select id="seatId" class="form-select mb-3" aria-label="Default select example">
+            <option  value="True" id="seatTrueId" text="True">True</option>
+            <option  value="False" id="seatFalseId" text="False">False</option>
+        </select>
+
         concentration
-        <div class="mb-3">
-            <input type="number" class="form-control"  id="concentration" th:field="${review.concentration}"
-                   placeholder="concentration을 입력해주세요">
-        </div>
+        <select id="concentrationId" class="form-select mb-3" aria-label="Default select example">
+            <option  value="True" name="concentrationId" >True</option>
+            <option  value="False" name="concentrationId" >False</option>
+        </select>
         imageUrl
         <div class="mb-3">
             <input type="text" class="form-control"  id="imageUrl" th:field="${review.imageUrl}"
