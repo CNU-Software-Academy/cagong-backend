@@ -66,4 +66,9 @@ public class CafeService {
     public long save(CafeSaveRequestDto requestDto) {
         return cafeRepository.save(requestDto.toEntity()).getId();
     }
+
+    @Transactional
+    public List<Long> findId() {
+        return cafeRepository.findId();
+    }
 }

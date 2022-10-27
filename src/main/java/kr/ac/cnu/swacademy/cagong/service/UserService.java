@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.springframework.security.core.userdetails.User.builder;
 
 @Slf4j
@@ -20,6 +22,11 @@ import static org.springframework.security.core.userdetails.User.builder;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+
+
+    public List<Long> findId() {
+        return userRepository.findId();
+    }
 
     public User join(User user) {
         validateDuplicateUser(user);
