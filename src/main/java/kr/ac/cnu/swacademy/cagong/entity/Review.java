@@ -41,6 +41,7 @@ public class Review extends BaseTimeEntity {
     @NotNull
     private Boolean seat;
     @NotNull
+    @Setter
     private Boolean concentration;
 
     @NotNull
