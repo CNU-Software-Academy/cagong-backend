@@ -9,6 +9,8 @@ import java.util.List;
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
     @Query("SELECT c FROM Cafe c ORDER BY c.id DESC")
     List<Cafe> findAllDesc();
+    @Query("SELECT id FROM Cafe")
+    List<Long> findId();
 
     List<Cafe> findByNameLike(String keyword);
 
