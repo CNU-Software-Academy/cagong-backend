@@ -11,25 +11,25 @@
 <table>
   <tr>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198080876-e5ce5f49-d86b-402b-8de4-8cfdad434730.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198289692-1215fc13-1ecb-41fc-97ed-db706d41d64c.png" width="100px" />
     </td>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198080909-ed37e02e-b97a-4f8a-91e6-062e0bacc0e7.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198289666-7fc784b9-a1c3-4bb7-86f0-450240332110.png" width="100px" />
     </td>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198080944-82abae05-02e1-46f1-a45e-98879d81c73b.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198289995-10854d00-b3db-41ce-8605-51dfd71bb973.png" width="100px" />
     </td>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198080979-8cbba1d3-a3d4-4478-85d3-769e5e338a59.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198292339-c35d7f79-30f0-4155-86a9-43d84a0a536a.png" width="100px" />
     </td>
     <td>
         <img src="https://user-images.githubusercontent.com/96678352/198081648-5ac7b22e-d1d8-4749-8416-441d6f1b635b.png" width="100px" />
     </td>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198081002-c91fe028-9474-403e-84f4-fb3729f92c4d.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198289350-ebbf7081-24b6-4032-a934-4e5fb4509fd3.png" width="100px" />
     </td>
     <td>  
-        <img src="https://user-images.githubusercontent.com/96678352/198081027-47ff30dc-4706-413d-8dac-edd3a9947459.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198291818-a1018f1c-cd8c-43a6-b877-41417af852e8.png" width="100px" />
     </td>
   </tr>
   <tr>
@@ -60,7 +60,7 @@
         <img src="https://user-images.githubusercontent.com/103566826/177922794-5a47df94-fc97-4beb-a6f4-16b24e315757.png" width="100px" />
     </td>
     <td>
-        <img src="https://user-images.githubusercontent.com/96678352/198080531-20012de1-9259-4d27-8db5-5b53a7600c2d.png" width="100px" />
+        <img src="https://user-images.githubusercontent.com/108648040/198291392-c2132a89-eae2-4507-b2ed-5ca7a2e21b76.png" width="100px" />
     </td>
   </tr>
   <tr>
