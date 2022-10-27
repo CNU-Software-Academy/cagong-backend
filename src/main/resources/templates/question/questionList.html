@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -46,7 +47,7 @@
                 <th scope="row">[[${question.id}]]</th>
                 <td><a th:href="@{/question/{id}(id=${question.id})}">[[${question.title}]]</a></td>
                 <td th:text="${#temporals.format(question.createdAt, 'yyyy-MM-dd')}"></td>
-                <td>관리자</td>
+                <td>질문자</td>
             </tr>
             </tbody>
         </table>

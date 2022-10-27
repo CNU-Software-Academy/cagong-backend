@@ -27,7 +27,7 @@ public class QuestionApiController {
         return questionService.update(id, requestDto);
     }
 
-    @DeleteMapping("/api/v1/question/{id}")
+    @DeleteMapping("/admin/api/v1/question/{id}")
     public Long delete(@PathVariable Long id) {
         questionService.delete(id);
         return id;
@@ -39,7 +39,7 @@ public class QuestionApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
-    @DeleteMapping("/api/question/{questionId}/answer/{answerId}")
+    @DeleteMapping("/admin/api/question/{questionId}/answer/{answerId}")
     public ResponseDto<Integer> answerDelete(@PathVariable Long answerId) {
         questionService.commentDelete(answerId);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);

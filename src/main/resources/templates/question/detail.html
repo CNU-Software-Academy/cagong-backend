@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -34,16 +34,16 @@
     <div class="container mt-3 " style="width: 800px;">
         <button class="btn btn-success" th:onclick="history.back()">질문목록</button>
 
-        <!--           todo: 관리자 필요-->
-        <span>
-            <a th:href="@{/question/update/{id}(id=${question.id})}" class="btn btn-warning">질문수정</a>
+        <span sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a th:href="@{/admin/question/update/{id}(id=${question.id})}" class="btn btn-warning">질문수정</a>
             <button id="btn-delete" class="btn btn-danger">질문삭제</button>
         </span>
+
         <br/> <br/>
         <div>
             <span>질문 번호</span>
             <span id="id">[[${question.id}]]</span>
-            <span>| 작성자 관리자 | </span>
+            <span>| 작성자 질문자 | </span>
             <span>등록일</span>
             <span th:text="${#temporals.format(question.createdAt, 'yyyy-MM-dd')}"></span>
         </div>
@@ -74,7 +74,8 @@
                     <li th:id="|answer-${answer.id}|" class=list-group-item d-flex justify-content-between>
                         <div>[[${answer.comment}]]</div>
                         <div style="width:100px;float:right;">
-                        <button th:onClick="|main.answerDelete(${question.id}, ${answer.id})|" class="btn btn-primary">답변삭제
+                        <button sec:authorize="hasAnyAuthority('ROLE_ADMIN')"
+                                th:onClick="|main.answerDelete(${question.id}, ${answer.id})|" class="btn btn-primary">답변삭제
                         </button>
                         </div>
                     </li>

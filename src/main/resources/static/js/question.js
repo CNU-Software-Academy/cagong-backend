@@ -59,7 +59,7 @@ let main = {
         if(confirm("질문을 삭제하시겠습니까?")){
         $.ajax({
             type: 'DELETE',
-            url: '/api/v1/question/'+ parseInt(id),
+            url: '/admin/api/v1/question/'+ parseInt(id),
             dataType: 'json',
             contentType:'application/json; charset=utf-8'
         }).done(function (){
@@ -95,7 +95,7 @@ let main = {
         if(confirm("답변을 삭제하시겠습니까?")) {
             $.ajax({
                 type: "DELETE",
-                url: `/api/question/${questionId}/answer/${answerId}`,
+                url: `/admin/api/question/${questionId}/answer/${answerId}`,
                 dataType: "json"
             }).done(function(resp){
                 alert("답변이 삭제되었습니다.");
