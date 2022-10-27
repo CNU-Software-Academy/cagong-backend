@@ -14,10 +14,11 @@ public class ReviewResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String content;
-    private int clean;
-    private int seat;
-    private int concentration;
     private String imageUrl;
+    private Boolean seat;
+    private Boolean concentration;
+    private int totalGrade;
+
 
 
     public ReviewResponseDto(Review review)
@@ -28,9 +29,9 @@ public class ReviewResponseDto {
         this.createdAt = review.getCreatedAt();
         this.updatedAt = review.getUpdatedAt();
         this.content = review.getContent();
-        this.clean = review.getClean();
         this.seat = review.getSeat();
         this.concentration = review.getConcentration();
         this.imageUrl = review.getImageUrl();
+        this.totalGrade = review.getTotalGrade();
     }
 }
