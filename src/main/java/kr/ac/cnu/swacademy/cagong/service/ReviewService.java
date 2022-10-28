@@ -38,6 +38,15 @@ public class ReviewService {
     }
 
     @Transactional
+    public List<ReviewListResponseDto> findAll()
+    {
+        return reviewRepository.findAll()
+                .stream()
+                .map(ReviewListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
     public ReviewResponseDto findById(Long id)
     {
         Review review = reviewRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 글이 없습니다. id=" + id));
