@@ -23,7 +23,9 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-
+    public Long findIdByUserName(String name){
+        return userRepository.findIdByUserName(name);
+    }
     public List<Long> findId() {
         return userRepository.findId();
     }
