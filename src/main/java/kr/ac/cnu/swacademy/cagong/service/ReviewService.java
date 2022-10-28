@@ -45,6 +45,12 @@ public class ReviewService {
     }
 
     @Transactional
+    public List<ReviewListResponseDto> findByCafeId(Long id) {
+        List<ReviewListResponseDto> reviews = reviewRepository.findReviewsByCafe(id);
+        return reviews;
+    }
+
+    @Transactional
     public Long save(ReviewSaveRequestDto requestDto) {
         User user = userRepository
                 .findById(requestDto.getUserId())
