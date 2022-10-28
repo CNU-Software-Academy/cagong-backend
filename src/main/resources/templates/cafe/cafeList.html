@@ -21,7 +21,7 @@
 <body class="container-fluid">
 <main>
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-        <a href="/cafes" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32">
                 <use xlink:href="#bootstrap"></use>
             </svg>
@@ -32,7 +32,12 @@
     </div>
     <div class="container mt-3 " style="width: 800px">
         <h2>카페 리스트</h2>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="d-grid gap-2 d-md-flex justify-content-between">
+            <div>
+                <label for="keyword">키워드</label>
+                <input id="keyword" type="text" placeholder="이디야 궁동" style="margin-right: 15px"/>
+                <button id="btn-search" class="btn btn-light me-md-2">검색</button>
+            </div>
             <a th:href="@{/cafe/save}" class="btn btn-primary me-md-2" type="button">추가</a>
         </div>
         <table class="table table-hover table-striped">
@@ -51,7 +56,7 @@
             </tr>
             </tbody>
         </table>
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center" th:if="${isPageable}">
             <li class="page-item disabled " th:if="${cafes.first}">
                 <a class="page-link"
                    th:href="@{/cafes(page=|${cafes.number-1}|)}">Previous</a>
@@ -71,6 +76,7 @@
             </li>
         </ul>
     </div>
+    <script type="text/javascript" th:src="@{/js/cafe/cafeList.js}"></script>
 </main>
 </body>
 </html>
