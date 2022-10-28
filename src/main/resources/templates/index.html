@@ -17,6 +17,48 @@
             overflow-x: auto;
             overflow-y: hidden;
         }
+
+        .wrapper {
+            margin-top: 35%;
+            justify-content: center;
+            align-items: center;
+            /*This part is important for centering*/
+            display: grid;
+            place-items: center;
+        }
+
+        .typing-demo {
+            width: 7ch;
+            animation: typing 1s steps(22), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            font-family: monospace;
+            font-size: 6em;
+            font-border: bold;
+        }
+
+        .typing-demo2 {
+            width: 50ch;
+            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            font-family: monospace;
+            font-size: 2em;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
+        }
     </style>
 </head>
 <body>
@@ -33,10 +75,14 @@
     </div>
     <div class="b-example-divider"></div>
     <div class="container mt-3 " style="width: 800px">
-        <h2>카공</h2>
-        <ul>
-            카페
-        </ul>
+        <div class="wrapper">
+            <div class="typing-demo">
+                CAGONG
+            </div>
+            <div class="typing-demo2">
+                충남대 학생들을 위한 위치 기반 카페 추천 서비스
+            </div>
+        </div>
     </div>
 </main>
 </body>
