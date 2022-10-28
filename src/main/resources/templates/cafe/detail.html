@@ -103,19 +103,19 @@
             <tr th:each="review : ${reviews}">
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.id}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.userId}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.cafeId}"></a>
-                </th>>
+                </th>
                 <td th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#temporals.format(review.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
             </tbody>
         </table>
-        <a href="/review/save" class="btn btn-primary">작성</a>
+        <a th:href="@{/review/save/{id}(id=${cafe.id})}" class="btn btn-primary">작성</a>
     </div>
 </main>
 </body>
