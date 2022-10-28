@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,10 +49,10 @@ class CafeRepositoryTest {
 
     @Test
     void 카페이름으로_조회하기() {
-        Optional<Cafe> givenCafe = cafeRepository.findByName(cafe.getName());
+        List<Cafe> givenCafe = cafeRepository.findByNameLike(cafe.getName());
 
         assertThat(givenCafe).isNotEmpty();
-        assertThat(givenCafe.get().getName()).isEqualTo(cafe.getName());
+        assertThat(givenCafe.get(0).getName()).isEqualTo(cafe.getName());
     }
 
 
