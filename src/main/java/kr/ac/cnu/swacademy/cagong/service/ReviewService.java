@@ -12,13 +12,11 @@ import kr.ac.cnu.swacademy.cagong.repository.ReviewRepository;
 import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.springframework.data.domain.Pageable;
 
 @RequiredArgsConstructor
 @Service
@@ -29,12 +27,10 @@ public class ReviewService {
     private final CafeRepository cafeRepository;
 
     @Transactional
-    public List<ReviewListResponseDto> findAll()
+    public Page<ReviewListResponseDto> findAllDesc(Pageable pageable)
     {
-        return reviewRepository.findAll()
-                .stream()
-                .map(ReviewListResponseDto::new)
-                .collect(Collectors.toList());
+        return reviewRepository.findAllDesc(pageable)
+                .map(ReviewListResponseDto::new);
     }
 
     @Transactional
