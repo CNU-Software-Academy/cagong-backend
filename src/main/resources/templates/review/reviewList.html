@@ -58,6 +58,26 @@
             </tr>
             </tbody>
         </table>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled " th:if="${reviewList.first}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number-1}|)}">Previous</a>
+            </li>
+            <li class="page-item" th:unless="${reviewList.first}">
+                <a class="page-link page-link-success"
+                   th:href="@{/reviews(page=|${reviewList.number-1}|)}">Previous</a>
+            </li>
+
+            <li class="page-item disabled" th:if="${reviewList.last}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number+1}|)}">Next</a>
+            </li>
+            <li class="page-item" th:unless="${reviewList.last}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number+1}|)}">Next</a>
+            </li>
+        </ul>
+
         <a href="/review/save" class="btn btn-primary">작성</a>
     </div>
 </main>
