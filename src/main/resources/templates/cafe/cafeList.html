@@ -32,13 +32,18 @@
     </div>
     <div class="container mt-3 " style="width: 800px">
         <h2>카페 리스트</h2>
-        <div class="d-grid gap-2 d-md-flex justify-content-between">
+        <div class="d-grid gap-2 d-md-flex justify-content-between" style="margin-top: 20px">
             <div>
                 <label for="keyword">키워드</label>
                 <input id="keyword" type="text" placeholder="이디야 궁동" style="margin-right: 15px"/>
                 <button id="btn-search" class="btn btn-light me-md-2">검색</button>
             </div>
             <a th:href="@{/cafe/save}" class="btn btn-primary me-md-2" type="button">추가</a>
+        </div>
+        <div class="d-grid gap-2 d-md-flex" style="margin-top: 20px">
+            <button id="btn-sort-by-average-score" class="btn btn-info me-md-2">평점순</button>
+            <button id="btn-sort-by-average-price" class="btn btn-info me-md-2">가격순</button>
+            <button id="btn-sort-by-study-score" class="btn btn-info me-md-2">공부환경점수순</button>
         </div>
         <table class="table table-hover table-striped">
             <thead>
