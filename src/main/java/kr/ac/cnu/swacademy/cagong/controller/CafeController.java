@@ -16,20 +16,20 @@ public class CafeController {
 
     private final CafeService cafeService;
 
-    @GetMapping("/admin/cafes")
+    @GetMapping("/cafes")
     public String adminCafesPage(Model model) {
         List<CafeListResponseDto> cafes = cafeService.findAllDesc();
         model.addAttribute("cafes", cafes);
         return "cafe/cafeList";
     }
 
-    @GetMapping("/admin/cafe/{id}")
+    @GetMapping("/cafe/{id}")
     public String adminCafeDetailPage(@PathVariable Long id, Model model) {
         model.addAttribute("cafe", cafeService.findById(id));
         return "cafe/detail";
     }
 
-    @GetMapping("/admin/cafe/save")
+    @GetMapping("/cafe/save")
     public String adminCafeSavePage() {
         return "cafe/saveForm";
     }

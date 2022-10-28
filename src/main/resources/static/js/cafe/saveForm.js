@@ -37,7 +37,7 @@ let main = {
                 data: JSON.stringify(data)
             }).done(function() {
                 alert('카페가 추가되었습니다.');
-                location.href = "/admin/cafes";
+                location.href = "/cafes";
             }).fail(function (error) {
                 console.log(JSON.stringify(error));
             });
