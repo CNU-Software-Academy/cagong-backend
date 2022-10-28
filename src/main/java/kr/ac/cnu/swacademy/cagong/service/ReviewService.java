@@ -46,8 +46,11 @@ public class ReviewService {
 
     @Transactional
     public List<ReviewListResponseDto> findByCafeId(Long id) {
-        List<ReviewListResponseDto> reviews = reviewRepository.findReviewsByCafe(id);
-        return reviews;
+        return reviewRepository
+                .findReviewsByCafe(id)
+                .stream()
+                .map(ReviewListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional
