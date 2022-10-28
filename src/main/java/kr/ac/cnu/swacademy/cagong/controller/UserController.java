@@ -29,7 +29,7 @@ public class UserController {
     @GetMapping("/join")
     public String join(Model model) {
         model.addAttribute("userFormDto", new UserFormDto());
-        return "/users/joinForm";
+        return "users/joinForm";
     }
 
     @PostMapping("/join")
@@ -56,7 +56,7 @@ public class UserController {
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/users/loginForm";
+        return "users/loginForm";
     }
 
     @PostMapping("/login")
