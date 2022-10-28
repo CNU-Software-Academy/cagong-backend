@@ -38,12 +38,12 @@
         </div>
         User id
         <select class="form-select mb-3" aria-label="Default select example" id="selectedUserId">
-            <option th:each="userId : ${userIdList}" th:value="${userId}" id="userId" th:text="${userId}" th:selected="${userId == 1}"></option>
+            <option th:each="userId : ${userId}" th:value="${userId}" id="userId" th:text="${userId}" th:selected="${userId == 1}"></option>
 
         </select>
         Cafe id
         <select class="form-select mb-3" aria-label="Default select example" id="selectedCafeId">
-            <option th:each="cafeId : ${cafeIdList}" th:value="${cafeId}" id="cafeId" th:text="${cafeId}" th:selected="${userId == 1}"></option>
+            <option th:each="cafeId : ${cafeId}" th:value="${cafeId}" id="cafeId" th:text="${cafeId}" th:selected="${userId == 1}"></option>
 
         </select>
         totalGrade
