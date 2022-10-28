@@ -46,13 +46,13 @@
             <tr th:each="review : ${reviewList}">
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.id}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.userId}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.cafeId}"></a>
-                </th>>
+                </th>
                 <td th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#temporals.format(review.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
