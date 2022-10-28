@@ -12,6 +12,7 @@ import kr.ac.cnu.swacademy.cagong.repository.ReviewRepository;
 import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,15 @@ public class ReviewService {
     }
 
     @Transactional
+    public List<ReviewListResponseDto> findByCafeId(Long id) {
+        return reviewRepository
+                .findReviewsByCafe(id)
+                .stream()
+                .map(ReviewListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
     public Long save(ReviewSaveRequestDto requestDto) {
         User user = userRepository
                 .findById(requestDto.getUserId())
@@ -65,6 +75,18 @@ public class ReviewService {
     public void delete(Long reviewId) {
         reviewRepository.findById(reviewId).orElseThrow(() -> new IllegalArgumentException("해당 id의 리뷰가 존재하지 않습니다."));
         reviewRepository.deleteById(reviewId);
+    }
+
+    @Transactional
+    public boolean authenticateUserName(String name, Long reviewId) {
+        Review review = reviewRepository
+                .findById(reviewId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 id의 리뷰가 존재하지 않습니다."));
+        User user = userRepository
+                .findById(review.getUser().getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 id의 유저가 존재하지 않습니다."));
+
+        return user.getUsername().equals(name);
     }
 
 }

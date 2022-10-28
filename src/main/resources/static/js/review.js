@@ -13,8 +13,8 @@ let main = {
     },
     save : function () {
         let data = {
-            userId: $('#userId').val(),
-            cafeId: $('#cafeId').val(),
+            userId: $('#selectedUserId').val(),
+            cafeId: $('#selectedCafeId').val(),
             totalGrade: $('#totalGrade').val(),
             seat: $('#seatId').val(),
             concentration: $('#concentrationId').val(),
@@ -37,8 +37,8 @@ let main = {
     },
     update : function () {
         let data = {
-            userId: $('#userId').val(),
-            cafeId: $('#cafeId').val(),
+            userId: $('#selectedUserId').val(),
+            cafeId: $('#selectedCafeId').val(),
             totalGrade: $('#totalGrade').val(),
             seat: $('#seatId').val(),
             concentration: $('#concentrationId').val(),

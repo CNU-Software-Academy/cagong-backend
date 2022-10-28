@@ -2,6 +2,7 @@ package kr.ac.cnu.swacademy.cagong.controller;
 
 import kr.ac.cnu.swacademy.cagong.dto.CafeListResponseDto;
 import kr.ac.cnu.swacademy.cagong.service.CafeService;
+import kr.ac.cnu.swacademy.cagong.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CafeController {
 
     private final CafeService cafeService;
+    private final ReviewService reviewService;
 
     @GetMapping("/cafes")
     public String adminCafesPage(Model model, @PageableDefault(size = 10) Pageable pageable) {
@@ -41,6 +43,7 @@ public class CafeController {
     @GetMapping("/cafe/{id}")
     public String adminCafeDetailPage(@PathVariable Long id, Model model) {
         model.addAttribute("cafe", cafeService.findById(id));
+        model.addAttribute("reviews", reviewService.findByCafeId(id));
         return "cafe/detail";
     }
 
