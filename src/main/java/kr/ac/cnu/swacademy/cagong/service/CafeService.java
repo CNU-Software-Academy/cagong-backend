@@ -47,6 +47,9 @@ public class CafeService {
 
     @Transactional(readOnly = true)
     public List<CafeResponseDto> findByKeyword(String keyword, String sortBy) {
+        if(keyword.equals("all")) {
+            return findAllDesc(sortBy);
+        }
         StringTokenizer st = new StringTokenizer(keyword, " ");
         List<Cafe> cafes = new ArrayList<>();
 
