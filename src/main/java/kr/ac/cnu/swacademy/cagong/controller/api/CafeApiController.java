@@ -5,6 +5,7 @@ import kr.ac.cnu.swacademy.cagong.dto.CafeResponseDto;
 import kr.ac.cnu.swacademy.cagong.dto.CafeSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.service.CafeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +21,6 @@ public class CafeApiController {
     @PostMapping("/api/cafe")
     public long save(@RequestBody CafeSaveRequestDto requestDto) {
         return cafeService.save(requestDto);
-    }
-
-    @GetMapping("/api/cafes")
-    public List<CafeListResponseDto> findAllDesc() {
-        return cafeService.findAllDesc();
     }
 
     @GetMapping("/api/cafes/search/keyword/{keyword}")

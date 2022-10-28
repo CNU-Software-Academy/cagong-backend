@@ -51,6 +51,25 @@
             </tr>
             </tbody>
         </table>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled " th:if="${cafes.first}">
+                <a class="page-link"
+                   th:href="@{/cafes(page=|${cafes.number-1}|)}">Previous</a>
+            </li>
+            <li class="page-item" th:unless="${cafes.first}">
+                <a class="page-link page-link-success"
+                   th:href="@{/cafes(page=|${cafes.number-1}|)}">Previous</a>
+            </li>
+
+            <li class="page-item disabled" th:if="${cafes.last}">
+                <a class="page-link"
+                   th:href="@{/cafes(page=|${cafes.number+1}|)}">Next</a>
+            </li>
+            <li class="page-item" th:unless="${cafes.last}">
+                <a class="page-link"
+                   th:href="@{/cafes(page=|${cafes.number+1}|)}">Next</a>
+            </li>
+        </ul>
     </div>
 </main>
 </body>
