@@ -46,18 +46,38 @@
             <tr th:each="review : ${reviewList}">
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.id}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.userId}"></a>
-                </th>>
+                </th>
                 <th scope="row">
                     <a th:href="@{/review/{reviewId}(reviewId=${review.id})}" th:text="${review.cafeId}"></a>
-                </th>>
+                </th>
                 <td th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd')}"></td>
                 <td th:text="${#temporals.format(review.updatedAt, 'yyyy-MM-dd')}"></td>
             </tr>
             </tbody>
         </table>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled " th:if="${reviewList.first}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number-1}|)}">Previous</a>
+            </li>
+            <li class="page-item" th:unless="${reviewList.first}">
+                <a class="page-link page-link-success"
+                   th:href="@{/reviews(page=|${reviewList.number-1}|)}">Previous</a>
+            </li>
+
+            <li class="page-item disabled" th:if="${reviewList.last}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number+1}|)}">Next</a>
+            </li>
+            <li class="page-item" th:unless="${reviewList.last}">
+                <a class="page-link"
+                   th:href="@{/reviews(page=|${reviewList.number+1}|)}">Next</a>
+            </li>
+        </ul>
+
         <a href="/review/save" class="btn btn-primary">작성</a>
     </div>
 </main>
