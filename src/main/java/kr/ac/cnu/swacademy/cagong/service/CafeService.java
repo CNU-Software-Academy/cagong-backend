@@ -6,6 +6,8 @@ import kr.ac.cnu.swacademy.cagong.dto.CafeSaveRequestDto;
 import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import kr.ac.cnu.swacademy.cagong.repository.CafeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,10 +23,9 @@ public class CafeService {
     private final CafeRepository cafeRepository;
 
     @Transactional(readOnly = true)
-    public List<CafeListResponseDto> findAllDesc() {
-        return cafeRepository.findAllDesc().stream()
-                .map(CafeListResponseDto::new)
-                .collect(Collectors.toList());
+    public Page<CafeListResponseDto> findAllDesc(Pageable pageable) {
+        return cafeRepository.findAllDesc(pageable)
+                .map(CafeListResponseDto::new);
     }
 
     @Transactional(readOnly = true)

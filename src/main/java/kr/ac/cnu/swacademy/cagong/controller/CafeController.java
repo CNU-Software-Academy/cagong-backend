@@ -3,6 +3,9 @@ package kr.ac.cnu.swacademy.cagong.controller;
 import kr.ac.cnu.swacademy.cagong.dto.CafeListResponseDto;
 import kr.ac.cnu.swacademy.cagong.service.CafeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +20,8 @@ public class CafeController {
     private final CafeService cafeService;
 
     @GetMapping("/cafes")
-    public String adminCafesPage(Model model) {
-        List<CafeListResponseDto> cafes = cafeService.findAllDesc();
+    public String adminCafesPage(Model model, @PageableDefault(size = 10) Pageable pageable) {
+        Page<CafeListResponseDto> cafes = cafeService.findAllDesc(pageable);
         model.addAttribute("cafes", cafes);
         return "cafe/cafeList";
     }
