@@ -77,7 +77,7 @@
                       placeholder="내용을 입력해주세요"></textarea>
         </div>
         <div>
-            <a th:href="@{/reviews}" role="button" class="btn btn-secondary">취소</a>
+            <a th:href="@{/cafe/{id}(id=${cafeId})}" role="button" class="btn btn-secondary">취소</a>
             <button type="button" id="btn-update" class="btn btn-primary">수정</button>
         </div>
     </div>
