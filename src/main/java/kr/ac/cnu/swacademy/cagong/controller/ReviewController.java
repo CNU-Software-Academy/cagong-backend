@@ -58,8 +58,12 @@ public class ReviewController {
 
     @GetMapping("/review/{reviewId}")
     public String reviewDetail(@PathVariable Long reviewId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        Long userId = userService.findIdByUserName(userName);
         ReviewResponseDto responseDto = reviewService.findById(reviewId);
         model.addAttribute("review", responseDto);
+        model.addAttribute("userId", userId);
         return "review/detail";
     }
 
