@@ -1,9 +1,6 @@
 package kr.ac.cnu.swacademy.cagong.service;
 
-import kr.ac.cnu.swacademy.cagong.dto.ReviewListResponseDto;
-import kr.ac.cnu.swacademy.cagong.dto.ReviewResponseDto;
-import kr.ac.cnu.swacademy.cagong.dto.ReviewSaveRequestDto;
-import kr.ac.cnu.swacademy.cagong.dto.ReviewUpdateRequestDto;
+import kr.ac.cnu.swacademy.cagong.dto.*;
 import kr.ac.cnu.swacademy.cagong.entity.Cafe;
 import kr.ac.cnu.swacademy.cagong.entity.Review;
 import kr.ac.cnu.swacademy.cagong.entity.User;
@@ -12,7 +9,6 @@ import kr.ac.cnu.swacademy.cagong.repository.ReviewRepository;
 import kr.ac.cnu.swacademy.cagong.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -101,4 +97,13 @@ public class ReviewService {
         return user.getUsername().equals(name);
     }
 
+    public List<MyPageResponseDto> myPage(String username) {
+        User user = userRepository.findByUsername(username);
+        List<Review> reviews = reviewRepository.findByUser(user);
+        return reviewRepository
+                .findByUser(user)
+                .stream()
+                .map(MyPageResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }

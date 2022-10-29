@@ -18,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.security.Principal;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -26,6 +28,12 @@ public class ReviewController {
 
     private final ReviewService reviewService;
     private final UserService userService;
+
+    @GetMapping("/mypage")
+    public String myPage(Model model, Principal principal) {
+        model.addAttribute("reviews", reviewService.myPage(principal.getName()));
+        return "review/myPage";
+    }
 
     @GetMapping("/reviews")
     public String reviewList(Model model, @PageableDefault(size= 10) Pageable pageable)
