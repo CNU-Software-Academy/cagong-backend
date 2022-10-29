@@ -36,7 +36,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th class="col-sm-1" scope="col">번호</th>
                 <th class="col-sm-6" scope="col">제목</th>
                 <th class="col-sm-2" scope="col">작성일</th>
                 <th class="col-sm-1" scope="col">작성자</th>
@@ -44,7 +43,6 @@
             </thead>
             <tbody>
             <tr th:each="notice : ${noticeList}">
-                <th scope="row">[[${notice.id}]]</th>
                 <td><a th:href="@{/notice/{id}(id=${notice.id})}">[[${notice.title}]]</a></td>
                 <td th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></td>
                 <td>관리자</td>
