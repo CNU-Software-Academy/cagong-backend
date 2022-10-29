@@ -27,7 +27,7 @@ let main = {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function () {
-            alert('질문이 등록되었습니다.');
+            alert('게시글이 등록되었습니다.');
             location.href = "/question";
         }).fail(function (error) {
             alert(JSON.stringify(error));
@@ -48,7 +48,7 @@ let main = {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function (){
-            alert('질문이 수정되었습니다.');
+            alert('게시글이 수정되었습니다.');
             location.href = "/question";
         }).fail(function (error) {
             alert(JSON.stringify(error));
@@ -56,14 +56,14 @@ let main = {
     },
     delete : function (){
         let id = $('#id').text();
-        if(confirm("질문을 삭제하시겠습니까?")){
+        if(confirm("게시글을 삭제하시겠습니까?")){
         $.ajax({
             type: 'DELETE',
             url: '/admin/api/v1/question/'+ parseInt(id),
             dataType: 'json',
             contentType:'application/json; charset=utf-8'
         }).done(function (){
-            alert('질문이 삭제되었습니다.');
+            alert('게시글이 삭제되었습니다.');
             location.href = "/question";
         }).fail(function (error){
             console.log(error);
@@ -85,20 +85,20 @@ let main = {
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).done(function(resp){
-            alert("답변이 등록되었습니다.");
+            alert("댓글이 등록되었습니다.");
             location.href = `/question/${data.questionId}`;
         }).fail(function(error){
             alert(JSON.stringify(error));
         });
     },
     answerDelete : function(questionId, answerId){
-        if(confirm("답변을 삭제하시겠습니까?")) {
+        if(confirm("댓글을 삭제하시겠습니까?")) {
             $.ajax({
                 type: "DELETE",
                 url: `/admin/api/question/${questionId}/answer/${answerId}`,
                 dataType: "json"
             }).done(function(resp){
-                alert("답변이 삭제되었습니다.");
+                alert("댓글이 삭제되었습니다.");
                 location.href = `/question/${questionId}`;
             }).fail(function(error){
                 alert(JSON.stringify(error));

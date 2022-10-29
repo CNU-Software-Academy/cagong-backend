@@ -36,7 +36,7 @@ public class QuestionController {
         return "question/saveForm";
     }
 
-    @GetMapping("/question/update/{id}")
+    @GetMapping("/admin/question/update/{id}")
     public String questionUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("question", questionService.findById(id));
         return "question/updateForm";
