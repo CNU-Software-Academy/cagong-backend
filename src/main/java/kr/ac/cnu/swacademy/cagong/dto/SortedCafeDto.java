@@ -8,6 +8,7 @@ import lombok.Getter;
 public class SortedCafeDto implements Comparable<SortedCafeDto> {
     private Long id;
     private String name;
+    private String address;
     private double distance;
     private double studyScore;
     private double averagePrice;
