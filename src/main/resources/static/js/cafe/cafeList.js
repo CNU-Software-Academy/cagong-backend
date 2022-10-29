@@ -13,6 +13,18 @@ let main = {
         $('#btn-sort-by-study-score').on('click', function () {
             _this.sortBy("study_score");
         });
+        $('#btn-sort-by-distance').on('click', function () {
+            _this.sortByDistance();
+        });
+        $('#btn-sort-by-distance-average-score').on('click', function () {
+            _this.sortByDistance("average_score");
+        });
+        $('#btn-sort-by-distance-average-price').on('click', function () {
+            _this.sortByDistance("average_price");
+        });
+        $('#btn-sort-by-distance-study-score').on('click', function () {
+            _this.sortByDistance("study_score");
+        });
     },
     search: function () {
         let keyword = $('#keyword').val();
@@ -32,7 +44,23 @@ let main = {
         } else {
             location.href = (getHostname(href) + "/cafes/search/keyword/all?sortBy=" + attribute);
         }
+    },
+    sortByDistance: function (attribute) {
+        let href = getHostname(location.href) + "/cafes/search/location";
+        let longitude = "127.349831";
+        let latitude = "36.359845";
+        if (attribute === "average_score") {
+            href = href + "/average-score";
+        }
+        if (attribute === "average_price") {
+            href = href + "/average-price";
+        }
+        if (attribute === "study_score") {
+            href = href + "/study-score";
+        }
+        location.href=href + "?longitude=" + longitude + "&latitude=" + latitude;
     }
+
 };
 main.init();
 
