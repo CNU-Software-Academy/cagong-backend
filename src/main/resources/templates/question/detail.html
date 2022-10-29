@@ -32,18 +32,18 @@
     </div>
     <div class="b-example-divider"></div>
     <div class="container mt-3 " style="width: 800px;">
-        <button class="btn btn-success" th:onclick="history.back()">질문목록</button>
+        <button class="btn btn-success" th:onclick="history.back()">게시글 목록</button>
 
         <span sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-            <a th:href="@{/admin/question/update/{id}(id=${question.id})}" class="btn btn-warning">질문수정</a>
-            <button id="btn-delete" class="btn btn-danger">질문삭제</button>
+            <a th:href="@{/admin/question/update/{id}(id=${question.id})}" class="btn btn-warning">게시글 수정</a>
+            <button id="btn-delete" class="btn btn-danger">게시글 삭제</button>
         </span>
 
         <br/> <br/>
         <div>
             <span>질문 번호</span>
             <span id="id">[[${question.id}]]</span>
-            <span>| 작성자 질문자 | </span>
+            <span>| 작성자 글쓴이 | </span>
             <span>등록일</span>
             <span th:text="${#temporals.format(question.createdAt, 'yyyy-MM-dd')}"></span>
         </div>
@@ -62,20 +62,20 @@
                     <textarea id="answer-comment" class="form-control" rows="1"></textarea>
                 </div>
                 <div style="width:100px;float:right;">
-                    <button type="button" id="btn-answer-save" class="btn btn-primary">답변등록</button>
+                    <button type="button" id="btn-answer-save" class="btn btn-primary">댓글등록</button>
                 </div>
             </form>
         </div>
         <br/>
         <div class="card">
-            <div class="card-header">답변</div>
+            <div class="card-header">댓글</div>
             <ul id="answer-box" class="list-group">
                 <th:block th:each="answer : ${question.answers}">
                     <li th:id="|answer-${answer.id}|" class=list-group-item d-flex justify-content-between>
                         <div>[[${answer.comment}]]</div>
                         <div style="width:100px;float:right;">
                         <button sec:authorize="hasAnyAuthority('ROLE_ADMIN')"
-                                th:onClick="|main.answerDelete(${question.id}, ${answer.id})|" class="btn btn-primary">답변삭제
+                                th:onClick="|main.answerDelete(${question.id}, ${answer.id})|" class="btn btn-primary">댓글삭제
                         </button>
                         </div>
                     </li>
