@@ -47,8 +47,8 @@ let main = {
     },
     sortByDistance: function (attribute) {
         let href = getHostname(location.href) + "/cafes/search/location";
-        let longitude = "127.349831";
-        let latitude = "36.359845";
+        let longitude = "127.34482084831873";
+        let latitude = "36.362416893000585";
         if (attribute === "average_score") {
             href = href + "/average-score";
         }
