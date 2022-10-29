@@ -23,9 +23,9 @@ public class CafeService {
     private final CafeRepository cafeRepository;
 
     @Transactional(readOnly = true)
-    public Page<CafeListResponseDto> findAllDesc(Pageable pageable) {
+    public Page<CafeResponseDto> findAllDesc(Pageable pageable) {
         return cafeRepository.findAllDesc(pageable)
-                .map(CafeListResponseDto::new);
+                .map(CafeResponseDto::new);
     }
 
     @Transactional(readOnly = true)
