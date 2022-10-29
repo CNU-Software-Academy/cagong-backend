@@ -14,6 +14,7 @@ public class ReviewListResponseDto {
     private Long cafeId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String content;
 
     public ReviewListResponseDto(Review review)
     {
@@ -22,6 +23,7 @@ public class ReviewListResponseDto {
         this.cafeId = review.getCafe().getId();
         this.createdAt = review.getCreatedAt();
         this.updatedAt = review.getUpdatedAt();
+        this.content = review.getContent();
     }
 
 
