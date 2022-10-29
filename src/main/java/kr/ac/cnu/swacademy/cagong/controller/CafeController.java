@@ -1,6 +1,7 @@
 package kr.ac.cnu.swacademy.cagong.controller;
 
 import kr.ac.cnu.swacademy.cagong.dto.CafeListResponseDto;
+import kr.ac.cnu.swacademy.cagong.dto.CafeResponseDto;
 import kr.ac.cnu.swacademy.cagong.service.CafeService;
 import kr.ac.cnu.swacademy.cagong.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class CafeController {
 
     @GetMapping("/cafes")
     public String adminCafesPage(Model model, @PageableDefault(size = 10) Pageable pageable) {
-        Page<CafeListResponseDto> cafes = cafeService.findAllDesc(pageable);
+        Page<CafeResponseDto> cafes = cafeService.findAllDesc(pageable);
         model.addAttribute("cafes", cafes);
         model.addAttribute("isPageable", true);
         return "cafe/cafeList";
