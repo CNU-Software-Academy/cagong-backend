@@ -45,8 +45,6 @@
             <button id="btn-sort-by-average-score" class="btn btn-info me-md-2">평점</button>
             <button id="btn-sort-by-average-price" class="btn btn-info me-md-2">가격</button>
             <button id="btn-sort-by-study-score" class="btn btn-info me-md-2">공부환경</button>
-        </div>
-        <div class="d-grid gap-2 d-md-flex" style="margin-top: 10px; margin-left: 70px">
             <button id="btn-sort-by-distance" class="btn btn-info me-md-2">거리</button>
             <button id="btn-sort-by-distance-average-score" class="btn btn-info me-md-2">거리&평점</button>
             <button id="btn-sort-by-distance-average-price" class="btn btn-info me-md-2">거리&가격</button>
@@ -67,8 +65,8 @@
                 <td><a th:href="@{/cafe/{id}(id=${cafe.id})}">[[${cafe.name}]]</a></td>
                 <td th:text="*{address}"></td>
                 <td th:text="*{averageScore}"></td>
-                <td th:text="*{studyScore}"></td>
-                <td th:text="*{averagePrice}"></td>
+                <td  th:text="${#numbers.formatInteger(cafe.studyScore*100, 0, 'COMMA')}"></td>
+                <td  th:text="|${#numbers.formatInteger(cafe.averagePrice, 0, 'COMMA')}원|"></td>
             </tr>
             </tbody>
         </table>
