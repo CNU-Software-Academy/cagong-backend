@@ -57,7 +57,7 @@ public class CafeDistanceService {
 
     private void filterOneKm(List<SortedCafeDto> sortedCafes, Cafe cafe, double distance) {
         if (distance < 1000) {
-            sortedCafes.add(new SortedCafeDto(cafe.getId(), cafe.getName(), distance, cafe.getStudyScore(), cafe.getAveragePrice(), cafe.getAverageScore()));
+            sortedCafes.add(new SortedCafeDto(cafe.getId(), cafe.getName(),cafe.getAddress(), distance, cafe.getStudyScore(), cafe.getAveragePrice(), cafe.getAverageScore()));
         }
     }
 

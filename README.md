@@ -74,6 +74,9 @@
 
 ## 🍭ERD
 
+<img src="https://user-images.githubusercontent.com/105831341/198823343-4fe07cf2-b176-4c69-8817-4523f47d96f2.jpeg" />
+
+
 ## 🥯Architecture
 
 ## 📜API 문서

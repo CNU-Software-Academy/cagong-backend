@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <title>cagong</title>
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body>
+<body class="container-fluid">
 <main>
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
@@ -30,22 +30,18 @@
         <hr>
         <div th:replace="fragments/sidebar :: sidebar"></div>
     </div>
-    <div class="container mt-3 " style="width: 800px">
-        <h2>자유게시판</h2>
-        <div class="mb-3">
-            <label for="title" class="form-label"></label>
-            <input type="text" class="form-control" th:field="${saveForm.title}" id="title"
-                   placeholder="제목을 입력해주세요">
+    <div class="container mt-3" style="width: 800px;">
+        <h2>내가 방문한 카페</h2>
+        <hr/>
+        <div>
+            <div class="card m-2" th:each="review : ${reviews}">
+                <div class="card-body ">
+                    <a th:href="@{/cafe/{id}(id=${review.cafeId})}"><h4 class="card-title">[[${review.cafeName}]]</h4></a>
+                    <a th:href="@{/review/{id}(id=${review.reviewId})}"><div>[[${review.content}]]</div></a>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="content" class="form-label"></label>
-            <textarea class="form-control" th:field="${saveForm.content}" id="content" rows="3"
-                      style="height: 500px"
-                      placeholder="내용을 입력해주세요"></textarea>
-        </div>
-        <button type="button" id="btn-save" class="btn btn-primary">등록</button>
     </div>
-    <script type="text/javascript" th:src="@{/js/question.js}"></script>
 </main>
 </body>
 </html>

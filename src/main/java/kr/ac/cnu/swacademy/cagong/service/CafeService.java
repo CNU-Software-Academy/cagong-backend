@@ -23,13 +23,33 @@ public class CafeService {
     private final CafeRepository cafeRepository;
 
     @Transactional(readOnly = true)
-    public Page<CafeListResponseDto> findAllDesc(Pageable pageable) {
+    public Page<CafeResponseDto> findAllDesc(Pageable pageable) {
         return cafeRepository.findAllDesc(pageable)
-                .map(CafeListResponseDto::new);
+                .map(CafeResponseDto::new);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CafeResponseDto> findAllDesc(String sortBy) {
+        List<Cafe> cafes = cafeRepository.findAllDesc();
+        if (sortBy.equals("average_score")) {
+            cafes.sort(Comparator.comparingDouble(Cafe::getAverageScore).reversed());
+        }
+        if (sortBy.equals("average_price")) {
+            cafes.sort(Comparator.comparingDouble(Cafe::getAveragePrice));
+        }
+        if (sortBy.equals("study_score")) {
+            cafes.sort(Comparator.comparingDouble(Cafe::getStudyScore).reversed());
+        }
+        return cafes.stream()
+                .map(CafeResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public List<CafeResponseDto> findByKeyword(String keyword, String sortBy) {
+        if(keyword.equals("all")) {
+            return findAllDesc(sortBy);
+        }
         StringTokenizer st = new StringTokenizer(keyword, " ");
         List<Cafe> cafes = new ArrayList<>();
 

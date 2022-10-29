@@ -48,10 +48,10 @@ class CafeApiControllerTest {
                 .address("34179 대전광역시 유성구 계룡로 92 cj나인파크 101-1호 이디야")
                 .build();
 
-        CafeListResponseDto cafeListResponseDto = new CafeListResponseDto(cafe);
+        CafeResponseDto cafeResponseDto = new CafeResponseDto(cafe);
 
-        given(cafeService.findAllDesc())
-                .willReturn(List.of(cafeListResponseDto));
+        given(cafeService.findAllDesc(""))
+                .willReturn(List.of(cafeResponseDto));
 
         // When, Then
         mockMvc.perform(get(BASE_URL + "/cafes"))
@@ -59,8 +59,8 @@ class CafeApiControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$[0]").exists())
-                .andExpect(jsonPath("$[0].name").value(cafeListResponseDto.getName()))
-                .andExpect(jsonPath("$[0].address").value(cafeListResponseDto.getAddress()))
+                .andExpect(jsonPath("$[0].name").value(cafeResponseDto.getName()))
+                .andExpect(jsonPath("$[0].address").value(cafeResponseDto.getAddress()))
                 .andDo(MockMvcResultHandlers.print());
     }
 
@@ -85,29 +85,6 @@ class CafeApiControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.name").value(cafe.getName()))
                 .andExpect(jsonPath("$.address").value(cafe.getAddress()))
-                .andDo(MockMvcResultHandlers.print());
-    }
-
-    @WithMockUser(roles = "USER")
-    @Test
-    @DisplayName("[API][GET] 카페 키워드 조회")
-    void findByKeywordTest() throws Exception {
-        // Given
-        Cafe cafe = Cafe.builder()
-                .name("이디야 대전유성온천역점(봉명동)")
-                .address("34179 대전광역시 유성구 계룡로 92 cj나인파크 101-1호 이디야")
-                .build();
-        List<CafeResponseDto> cafeResponseDtos = List.of(new CafeResponseDto(cafe));
-
-        given(cafeService.findByKeyword(any(), any()))
-                .willReturn(cafeResponseDtos);
-
-        // When, Then
-        mockMvc.perform(get(BASE_URL + "/cafes/search/keyword/이디야"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].name").value(cafe.getName()))
-                .andExpect(jsonPath("$[0].address").value(cafe.getAddress()))
                 .andDo(MockMvcResultHandlers.print());
     }
 
