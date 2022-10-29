@@ -36,8 +36,8 @@
 
         <!--           todo: 관리자 필요-->
         <span>
-            <a th:href="@{/review/update/{id}(id=${review.id})}" class="btn btn-warning">수정</a>
-            <button id="btn-delete" class="btn btn-danger">삭제</button>
+            <a th:if="${userId == review.userId}" th:href="@{/review/update/{id}(id=${review.id})}" class="btn btn-warning">수정</a>
+            <button th:if="${userId == review.userId}" id="btn-delete" class="btn btn-danger">삭제</button>
         </span>
         <br/> <br/>
         <div>
@@ -61,6 +61,7 @@
         <hr/>
         <div th:text="${review.content}"></div>
     </div>
+    <p id="cafeId" hidden>[[${review.cafeId}]]</p>
     <script type="text/javascript" th:src="@{/js/review.js}"></script>
 </main>
 </body>
