@@ -46,7 +46,6 @@ let main = {
             content: $('#content').val(),
         };
 
-        console.log(data)
         let id = $('#id').val();
 
         $.ajax({
@@ -64,6 +63,7 @@ let main = {
     },
     delete : function () {
         let id = $('#id').text();
+        let cafeId = $('#cafeId').text();
 
         $.ajax({
             type: 'DELETE',
@@ -72,6 +72,7 @@ let main = {
             contentType:'application/json; charset=utf-8'
         }).done(function() {
             alert('글이 삭제되었습니다.');
+            location.href = "/cafe/" + cafeId;
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
