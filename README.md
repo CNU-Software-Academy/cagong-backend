@@ -78,6 +78,8 @@
 
 
 ## 🥯Architecture
+<img src="https://user-images.githubusercontent.com/108648040/198879253-f72ad5ad-97fc-4975-81a2-9d895f83f063.png" />
+
 
 ## 📜API 문서
 - [API 문서](https://cagong.herokuapp.com/swagger-ui/)
