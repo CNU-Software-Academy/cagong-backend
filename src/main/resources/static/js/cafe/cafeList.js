@@ -46,21 +46,28 @@ let main = {
         }
     },
     sortByDistance: function (attribute) {
-        let href = getHostname(location.href) + "/cafes/search/location";
-        let longitude = "127.34482084831873";
-        let latitude = "36.362416893000585";
-        if (attribute === "average_score") {
-            href = href + "/average-score";
-        }
-        if (attribute === "average_price") {
-            href = href + "/average-price";
-        }
-        if (attribute === "study_score") {
-            href = href + "/study-score";
-        }
-        location.href=href + "?longitude=" + longitude + "&latitude=" + latitude;
-    }
+        function getPositionSuccess(position) {
+            let href = getHostname(location.href) + "/cafes/search/location";
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
 
+            if (attribute === "average_score") {
+                href = href + "/average-score";
+            }
+            if (attribute === "average_price") {
+                href = href + "/average-price";
+            }
+            if (attribute === "study_score") {
+                href = href + "/study-score";
+            }
+            location.href=href + "?longitude=" + longitude + "&latitude=" + latitude;
+        }
+
+        function getPositionError() {
+            alert("위치를 찾을 수 없습니다.");
+        }
+        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError);
+    }
 };
 main.init();
 
